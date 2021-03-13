@@ -289,8 +289,8 @@ pyvenv.cfg
 Scripts
 Lib
 
-# Data to be anonymized
-data/tweets.csv
+# Data, generally too large for GitHub
+data/
 
 # Data that's too big
 data/europarl*
