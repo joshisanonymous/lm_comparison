@@ -20,8 +20,8 @@ token <- create_token(
 
 # Mine tweets from now to progressively earlier
 while (nrow(tweets) < targetCorpusSize) {
-  if (!exists("currentMinId")) {
-    currentMinId <- NULL
+  if (!exists("currentMaxId")) {
+    currentMaxId <- NULL
   }
   tweetsToAppend <- search_tweets(
     query,
@@ -30,7 +30,7 @@ while (nrow(tweets) < targetCorpusSize) {
     geocode = geocode,
     parse = TRUE,
     token = token,
-    max_id = currentMinId,
+    since_id = currentMaxId,
     retryonratelimit = TRUE
   )
   if (exists("tweets")) {
@@ -38,7 +38,7 @@ while (nrow(tweets) < targetCorpusSize) {
   } else {
     tweets <- tweetsToAppend
   }
-  currentMinId <- min(tweets$status_id)
+  currentMaxId <- max(tweets$status_id)
   save.image()
 }
 
