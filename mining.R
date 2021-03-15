@@ -18,7 +18,7 @@ token <- create_token(
   access_secret = accessSecret
 )
 
-# Mine tweets from now to progressively earlier
+# Mine tweets from now to later
 while (nrow(tweets) < targetCorpusSize) {
   if (!exists("currentMaxId")) {
     currentMaxId <- NULL
