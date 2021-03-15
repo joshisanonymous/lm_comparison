@@ -6,7 +6,7 @@
   % Variationist work that makes generalizes to communities from small sets of variables
     % Which group distinctions have been drawn
     % What are the advantages of this approach
-    % What is assumptions remain that call for more holistic analyses
+    % What assumptions remain that call for more holistic analyses
   % Variationist work in CMC that brings in many more variables
     % CMC definition and characteristics
     % Which group distinctions have been drawn
@@ -20,11 +20,34 @@
     % Are n-gram language models useful for quantifying the linguistic distance between communities?
 % Methods
   % Data collection
+    % The europarl corpus
+      % This is a parallel corpus that can be used to set the baseline for what one should expect between what are generally viewed as completely different languages and between one variety at different times
+        % For different languages: built models from the English and French documents
+        % For one variety: built models from the first and second halves of the English documents
+        % In effect, this data can be said to be coded for language and text section
     % Twitter data
       % Characteristics of Twitter
-      % What makes this appropriate for this study
-    % Tweet collected from Louisiana and filtered for discussion of race and ethnicity
-      % Narrowing the type of data analyzed helps ensure that distinctions between communities won't be the result of simply different topics of conversation
-      % The race/ethnicity situation in Louisiana has been analyzed before and is complex, so narrowing in this way may provide insights into social questions, though that's not the primary objective of this study
+        % What makes this appropriate for this study
+      % Tweets collected from Louisiana and filtered for discussion of race and ethnicity
+        % Narrowing the type of data analyzed helps ensure that distinctions between communities won't be the result of simply different topics of conversation
+        % The race/ethnicity situation in Louisiana has been analyzed before and is complex, so narrowing in this way may provide insights into social questions, though that's not the primary objective of this study
+      % Coding
+        % The goal here is to compare linguistic distance between communities but also to consider what factors may draw those communities together
+        % Community detection
+          % Communities are conceptualized on structural grounds in that those who interact with the same people on a consistent basis are considered to form a community
+            % In this case, a directed tweet counts as the sender interacting with the receiver
+            % The number of directed tweets between two users counts as the amount of interaction
+          % Newman & Girvan's (2004) community detection algorithm is used
+  % Language models
+    % Following Duvenhage (2019) due to his success for DSL 17, both word and character n-grams were trained, unigrams and bigrams for the former, bigrams, 4-grams, and 6-grams for the latter.
+      % These models each capture different levels of the language, so I conceptualize them as follows:
+        % Word unigrams: lexicon
+        % Word bigrams: syntax (or at least some small amount of syntax)
+        % Character n-grams: orthography and morphology
+  % Analysis
+    % Two statistics are used: KL divergence and cosine similarity
+      % Both of these show essentially the same thing (i.e., how similar/different two distributions are), but the former is easier to interpret and the latter makes comparisons between language pairs more doable
+      % These are calculated for like-models (e.g., word unigram to word unigram, character 4-gram to character 4-gram, etc.)
+        % This makes it possible to see how distance two varieties are on different linguistic levels
 % Results
 % Discussion
