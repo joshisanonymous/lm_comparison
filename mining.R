@@ -1,3 +1,12 @@
+########################################################################
+# This script collects tweets as they are posted using the researcher  #
+# Twitter API access level. Tweets come from a particular region up to #
+#a particular total number of tweets.                                  #
+#                                                                      #
+# Joshua McNeill - joshua dot mcneill at uga dot edu                   #
+########################################################################
+
+
 # Packages
 library(rtweet)
 
@@ -42,6 +51,9 @@ while (nrow(tweets) < targetCorpusSize) {
   save.image()
 }
 
+# Remove irrelevant columns
+tweets <- tweets[, c(3:7, 10, 13:18, 31, 32, 64:71, 73:75, 77:84)]
+
 # Save to a csv and clean up
-write_as_csv(tweets, "./data/tweets.csv")
+write_as_csv(tweets, "./data/corpora/tweets.csv")
 rm(list = ls())
