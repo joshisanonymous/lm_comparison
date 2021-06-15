@@ -5,22 +5,27 @@
     % The objective for this study is to develop a method for comparing the languages of communities holistically, including practically all possible variables.
   % Variationist work that makes generalizations to communities from small sets of variables
     % Which group distinctions have been drawn
-    % What are the advantages of this approach
     % What assumptions remain that call for more holistic analyses
-  % Variationist work that has looked involved looking for clusters of variables
-    % Guy and various AAVE studies
-    % Studies that look at systems like vowel systems
+      % At least implicitly, the assumption is that a small number of variables are representative of entire varieties
+        % Of course, explicit commentary by community members or perceptual studies may suggest that these small sets of variables are in fact the most salient, but that does not mean that they alone tell us how close or far apart two varieties are
+        % If one is interested in salient variables, though, it is surely advantageous to do a more traditional analysis with a small number of variables as a large-scale holistic approach works more like a black box
+    % If interested in saliency, though, being able to compare the distance between varieties holistically with the differences in the use of a few salient variables may still be enlightening, though, and is not currently done
+  % Variationist work that has involved looking for clusters of variables or large numbers of variables
+    % Clusters
+      % Guy's work, although the purpose is different
+      % AAVE studies sometimes work this way
+      % Studies that look at systems like vowel systems
   % Variationist work in CMC that brings in many more variables
-    % CMC definition and characteristics
-    % Which group distinctions have been drawn
-    % What sort of variables are used
+    % CMC definition and characteristics (maybe just a paragraph)
+    % What sort of variables are used and which group distinctions have been drawn
     % This is holistic, but is it holistic enough?
+      % A lot of these studies are really only looking at lexical variation even though they include many variables
   % An even more holistic approach is to use character n-gram and word n-gram language models
-    % This has been used in classifiers in NLP for the task of language variety identification
+    % This has been used in classifiers in NLP for the task of language identification and language variety identification
     % The success of these models in distinguishing between even minorly different language varieties suggests that they can be compared to quantify the linguistic distance between two varieties, as well
       % Language models in NLP are, after all, essentially just probability distributions over some set of symbols
   % Research question
-    % Are n-gram language models useful for quantifying the linguistic distance between communities?
+    % Are n-gram language models useful for quantifying the linguistic distance between varieties in a more holistic way than has been previously possible?
 % Methods
   % Data collection
     % The europarl corpus
@@ -28,19 +33,25 @@
         % For different languages: built models from the English and French documents
         % For one variety: built models from the first and second halves of the English documents
         % In effect, this data can be said to be coded for language and text section
-    % Twitter data
+    % Twitter data (Twitter data will be left out for the QP1 version)
       % Characteristics of Twitter
         % What makes this appropriate for this study
       % Tweets collected from Louisiana and filtered for discussion of race and ethnicity
         % Narrowing the type of data analyzed helps ensure that distinctions between communities won't be the result of simply different topics of conversation
         % The race/ethnicity situation in Louisiana has been analyzed before and is complex, so narrowing in this way may provide insights into social questions, though that's not the primary objective of this study
       % Coding
-        % The goal here is to compare linguistic distance between communities but also to consider what factors may draw those communities together
+        % The goal here is to compare linguistic distance between communities
         % Community detection
           % Communities are conceptualized on structural grounds in that those who interact with the same people on a consistent basis are considered to form a community
             % In this case, a directed tweet counts as the sender interacting with the receiver
             % The number of directed tweets between two users counts as the amount of interaction
-          % Newman & Girvan's (2004) community detection algorithm is used
+          % Blondel et al.'s community detection algorithm is used
+        % Language models will be built for a handful of communities which contain substantial numbers of tweets about race/ethnicity
+          % Race/ethnicity are chosen because Louisiana has a complex history in this regard
+            % Historically was not divided by Black and White, instead having Black, Creole, and White, but has come to be Black=Creole vs White=Cajun today
+          % Race/ethnicity tweets will be detected using a classifier trained on 1% of the total tweets collected (~40,000)
+          % There is some subjectivity about what exactly constitutes discussion of race/ethnicity
+            % Include some examples of tweets that are unarguably about race/ethnicity and some that are not
   % Language models
     % Following Duvenhage (2019) due to his success for DSL 17, both word and character n-grams were trained, unigrams and bigrams for the former, bigrams, 4-grams, and 6-grams for the latter.
       % These models each capture different levels of the language, so I conceptualize them as follows:
@@ -49,8 +60,14 @@
         % Character n-grams: orthography and morphology
   % Analysis
     % Two statistics are used: KL divergence and cosine similarity
-      % Both of these show essentially the same thing (i.e., how similar/different two distributions are), but the former is easier to interpret and the latter makes comparisons between language pairs more doable
+      % Both of these show essentially the same thing (i.e., how similar/different two distributions are), but the former is easier to interpret and the latter makes comparisons between language pairs easier as values are always between -1 and 1
       % These are calculated for like-models (e.g., word unigram to word unigram, character 4-gram to character 4-gram, etc.)
-        % This makes it possible to see how distance two varieties are on different linguistic levels
+        % This makes it possible to see how distant two varieties are on different linguistic levels
 % Results
+  % europarl baseline results
+    % What are the KL divergence and cosine similarity values when comparing French and English?
+      % What about when comparing different model types? (Look at combining all models and looking at models individually)
+    % What are the KL divergence and cosine similarity values when comparing English-English comparisons and French-French comparisons?
+      % What about when comparing different model types? (Look at combining all models and looking at models individually)
+  % Do the same for the Twitter data between detected communities
 % Discussion
