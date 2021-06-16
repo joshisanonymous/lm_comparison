@@ -1,28 +1,37 @@
 % Introduction
   % Variationist work has traditionally focused on a handful of bellweather variables and generalized out from there.
     % This is the case despite the more holistic approaches from work in dialectology that came before.
-    % [overleaf comment test] Variationist work in CMC has allowed for many more variables to be included at a time, moving back towards a holistic approach.
+    % Variationist work in CMC has allowed for many more variables to be included at a time, moving back towards a holistic approach.
     % The objective for this study is to develop a method for comparing the languages of communities holistically, including practically all possible variables.
   % Variationist work that makes generalizations to communities from small sets of variables
     % Which group distinctions have been drawn
     % What assumptions remain that call for more holistic analyses
       % At least implicitly, the assumption is that a small number of variables are representative of entire varieties
         % Of course, explicit commentary by community members or perceptual studies may suggest that these small sets of variables are in fact the most salient, but that does not mean that they alone tell us how close or far apart two varieties are
+          % In fact, it's been suggested that saliency is a prerequisite before a linguistic variable can have social meaning (Podesva 2011:235)
           % Bell (1984) claimed that most linguistic variables are markers (Labov 1972) (152), but that is not necessarily still the case
           % Stereotypes (Labov 1972) and variables that have obtained 3rd order indexicality (Silverstein 2003) have been proposed, each roughly referring to variables that are salient enough to receive overt commentary, so the notion that variables can be this salient is widely accepted
           % The process of enregisterment of Pittsburghese has been examined largely in terms of the growing salience of variables (Johnstone et al. 2006)
-        % If one is interested in salient variables, though, it is surely advantageous to do a more traditional analysis with a small number of variables as a large-scale holistic approach works more like a black box
+          % Indices have sometimes been used to determine saliency (Podesva 2011:237), but explicit commentary and perceptual studies are perhaps the best way, and latter have indeed become common in recent times
+            % These studies often take experimental approaches, instead of the traditional observational variationist studies, using eye-tracking (D'Onofrio 2015), matched-guise experiments (Campbell-Kibler 2009; Delforge 2012)
+            % Preconceptions of Valley Girls and Californians can impact perceptions of the TRAP vowel (D'Onofrio 2015)
+            % The alveolar (ing) variant has been shown to be judged differently depending on the listener, but there was always a judgement (Campbell-Kibler 2009)
+            % Vowel devoicing in Andean Spanish has been shown to be less noticeable by listeners when they do not want to notice it, as those who denied having the feature still had it at similar rates to those from elsewhere in whom they regularly perceived the feature (Delforge 2012)
+          % The point is that saliency is indeed important when one is interested in social meaning
     % If interested in saliency, being able to compare the distance between varieties holistically with the differences in the use of a few salient variables may still be enlightening, though, and is not currently done
   % Variationist work that has involved looking for clusters of variables or large numbers of variables
     % Clusters
-      % Guy's work, although the purpose is different
-      % AAVE studies sometimes work this way
+      % AAVE studies may focus on a small number of variables (e.g., zero copula, habitual be, plural -s, 3rd person present -s, and possessive -s (Rickford & McNair-Knox 1994)), but sometimes look at large numbers of features
+        % The dialect density measure (DDM), developed in research on speech pathology and education, involves counting the frequency of features and has been employed in the study of variation in AAE using 32 different features (Van Hofwegen & Wolfram 2010)
+        % Similarly, a set of 25 AAVE features as used by gay British men on Twitter have been analyzed according to frequency (Ilbury 2020)
+        % Also on Twitter, 30+ non-standard spellings thought to be associated with AAVE have been analyzed in order to draw AAVE dialect maps in the US (Jones 2015)
       % Studies that look at systems like vowel systems
-  % Variationist work in CMC that brings in many more variables
-    % CMC definition and characteristics (maybe just a paragraph)
-    % What sort of variables are used and which group distinctions have been drawn
-    % This is holistic, but is it holistic enough?
-      % A lot of these studies are really only looking at lexical variation even though they include many variables
+        % Guy's work, although the purpose is different
+    % Variationist work in CMC that brings in many more variables
+      % CMC definition and characteristics (maybe just a paragraph)
+      % What sort of variables are used and which group distinctions have been drawn
+      % This is holistic, but is it holistic enough?
+        % A lot of these studies are really only looking at lexical variation even though they include many variables
   % An even more holistic approach is to use character n-gram and word n-gram language models
     % This has been used in classifiers in NLP for the task of language identification and language variety identification
     % The success of these models in distinguishing between even minorly different language varieties suggests that they can be compared to quantify the linguistic distance between two varieties, as well
