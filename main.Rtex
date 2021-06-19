@@ -44,13 +44,48 @@
           % Not only have corpora created through sociolinguistic interviews been collected since at least the 1960s, large swaths of existing written language have been digitized (e.g., Google Books, BNC, COCA, Brown)
           % Data mining social media has made collecting large contemporary corpora more the question of what's ethical much more prominent than the question of how to obtain data (see D'Arcy & Young 2012 for some focused discussion)
             % Corpora for Twitter, for instance, have reached sizes such as 62 million tweets (Hong et al. 2011:519) or 114 million tweets (Eisenstein 2013:13) or even 924 million tweets (Huang et al. 2016:244)
-        % The field of natural language processing (NLP) has led to the development of better and better tools
-          % 
-      % What sort of variables are used and which group distinctions have been drawn
+        % The field of natural language processing (NLP) has led to the development of better and better tools, some that are particularly useful for expediting variationist analyse
+          % Part-of-speech tagging is another tool that is now widely available
+            % This typically involves training a tagger on some documents that were hand-coded for part-of-speech
+            % Luckily, there are numerous corpora that are already hand-coded that can be used at least for major languages, such as the Brown corpus for English (Kuc̆era & Francis 1967)
+          % Related to part-of-speech tagging is the task of parsing sentences
+            % This is done in much the same way as part-of-speech tagging where some training data is used to train a parser that can then automatically parse new sentences
+            % Again, luckily, there are already many corpora that have already been parsed by hand, referred to as treebanks, such as the Penn Treebank for English (Prasad et al. 2019)
+            % These tools are useful for variationists looking at syntax but also potentially any other variationist whose linguistic variables may be syntactically conditioned
+          % Classifiers are trained to accomplish a number of tasks that are useful for coding documents
+            % "Documents" are understood in this case to be any amount of text that acts like a unit, be it a tweet or a book
+            % A classic example of a classifier task is identifying the topic of a document
+              % The goal is often solving problems such as spotting email spam (Dada et al. 2019), news topic classification, opinion mining, and so on (Minaee et al. 2021)
+            % One classification task that is relevant here: language variety identification
+              % The goal is to identify the variety used in a document when those varieties are relatively similar
+              % This has been worked on for Arabic varieties (Bouamor et al. 2019), Balkan languages, Indonesian vs Malaysian, Portuguese varieties, Spanish varieties, French varieties, and Persian vs Dari (Zampieri et al. 2017)
+          % These tools help variationists relegate much work that used to be done by hand to a machine
+            % Admittedly, it is still prudent to go through samples of the data for quality assurance, but doing so is much quicker than coding by hand
+            % Perhaps the biggest yet simplest advancement, particularly when considering how many variables can be analyzed at once, has just been counting
+              % A few lines of basic code can return counts for tokens of linguistic variables from millions to even billions of words of text
+      % Variationist studies that have looked at large numbers of linguistic variables at once
+        % Huang et al. (2016) looked at 211 sets of lexical items to examine regional variation throughout the US as expressed on Twitter
+        % Pavalanathan & Eisenstein (2015) looked at over 200 lexical variables, treating them as binary options of either being present or absent, to examine the influence of audience on language use on Twitter
+        % Bamman et al. (2014) looked at 10,000 lexical items in their analysis of gender on Twitter, though they used these items a bit differently from how they would be used in a traditional variationist study
+          % The lexical items were first used to train a classifier to identify the gender of Twitter users
+          % They then looked at which words were most strongly associated with one gender or the other, which is where the analysis more resembles traditional studies
+          % Their methods are not unlike those that will be proposed here in that they also include a marriage of NLP and sociolinguistics
+        % In some ways, these studies harken back to the early days of dialectology where the goal was to produce Atlases that demonstrated the boundaries between regional varieties such as the Atlas linguistique de la France for French (Gilliéron & Edmond 1902) or the Sprach-Atlas for German (Wenker 1881/2020)
+          % New technologies give modern work the opportunities for insights that were not possible in the past
+          % A similar leap in research possibilities based on technological advancement that has been noted is the availability of tape recorders, which made socioilnguistic research based on real speech starting in the 1960s a reality (Milroy & Milroy 1985:52)
       % This is fairly holistic, but is it holistic enough?
         % A lot of these studies are really only looking at lexical variation even though they include many variables
+        % A more holistic approach would include more than individual lexical items, even if very many individual lexical items are considered
+          % How are other linguistic levels captured?
   % An even more holistic approach is to use character n-gram and word n-gram language models
-    % This has been used in classifiers in NLP for the task of language identification and language variety identification
+    % n-gram language models take every unique n number of consecutive symbols in a corpus and counts up how often they occur
+      % The symbols typically used are words or characters, but any symbol can be used
+        % Given a corpus tagged for part-of-speech, consecutive parts-of-speech may be used, for instance
+        % Given a corpus fully transcribed into IPA, consecutive IPA symbols may be used
+      % An example might be a word bigram model
+        % For a sentence such as "this is a sentence", the word bigrams contained would be "this is", "is a", and "a sentence"
+        % Alternatively, a character 4-gram of the same sentence would yield "this, "his ", "is i", "s is", " is ", and so on
+    % n-gram language models have been used in classifiers in NLP for the task of language identification and language variety identification, as mentioned above
     % The success of these models in distinguishing between even minorly different language varieties suggests that they can be compared to quantify the linguistic distance between two varieties, as well
       % Language models in NLP are, after all, essentially just probability distributions over some set of symbols
   % Research question
@@ -62,7 +97,7 @@
         % For different languages: built models from the English and French documents
         % For one variety: built models from the first and second halves of the English documents
         % In effect, this data can be said to be coded for language and text section
-    % Twitter data (Twitter data will be left out for the QP1 version)
+    % [Twitter data will be left out for the QP1 version] Twitter data
       % Characteristics of Twitter
         % What makes this appropriate for this study
       % Tweets collected from Louisiana and filtered for discussion of race and ethnicity
@@ -98,5 +133,24 @@
       % What about when comparing different model types? (Look at combining all models and looking at models individually)
     % What are the KL divergence and cosine similarity values when comparing English-English comparisons and French-French comparisons?
       % What about when comparing different model types? (Look at combining all models and looking at models individually)
-  % Do the same for the Twitter data between detected communities
+  % [After finishing the QP1 version of this,] do the same for the Twitter data between detected communities
 % Discussion
+  % This technique for comparing varieties holistically appears to work, but there are some limitations to consider and questions left unanswered
+    % Are the language models used here the right models?
+    % How big do corpora need to be in order for this technique to work?
+    % How does this relate to traditional work that typically examines only a few linguistic variables but in great detail?
+  % Are the models used truly the best language models that could be used here?
+    % For instance, KL divergence here is calculated based on the empirical probabilities for each n-gram in each model (i.e., relative frequencies)
+    % An alternative would be to use something like term frequency minus inverse document frequency (TF-IDF), which is commonly used in NLP and is meant to give the greatest weight in a model to n-grams that are frequent in a small number of documents
+      % Eisenstein (2014) took a similar approach when identifying terms of import for differentiating between dialects on Twitter (5)
+    % If, however, the type of models used here are not optimal, the approach can still be just as easily applied to other types of language models, both existing and yet to be proposed types
+  % Related to whether these are the best types of language models to use for this technique of comparing varieties is the question of how large the corpora that are used to generate the language models ought to be
+    % The europarl corpora are quite large, which presumably means there would not be a great difference between something like an empirical probability and any other sort of calculated probability
+    % There are, however, cases where a researcher might want to apply the technique when using much smaller corpora
+    % There may very well be a threshold where different language model types are more or less useful depending on whether the corpora size is above or below the threshold
+      % This is something that cannot be addressed in the present study, but would be worthwhile to examine in future work
+  % As was discussed earlier, salient linguistic variables may be far more important than other variables
+    % For instance, the technique used here might find two varieties differ in that one variety uses the preposition "for" where another uses "of" sometimes
+      % It is not evident that such a small difference is noticeable at all, even subconsciously, by speakers of these varieties
+    % If the differences found between two varieties are not salient on any level, does it actually make sense to speak of them as two separate varieties?
+      % This question cannot be answered here, but it is at least a question that can now be examined by comparing the results from a holistic technique as used here to results for the same data from a more traditional, fine-grained analysis
