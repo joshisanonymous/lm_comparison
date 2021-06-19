@@ -64,6 +64,8 @@
             % Perhaps the biggest yet simplest advancement, particularly when considering how many variables can be analyzed at once, has just been counting
               % A few lines of basic code can return counts for tokens of linguistic variables from millions to even billions of words of text
       % Variationist studies that have looked at large numbers of linguistic variables at once
+        % Somewhat between the a very large number of linguistic variables and the more traditional number of variables is Grieve's work
+          % For example, Grieve et al. (2018) looked at 54 lexical items on Twitter that they judged to be innovations and mapped their geographic diffusion over time
         % Huang et al. (2016) looked at 211 sets of lexical items to examine regional variation throughout the US as expressed on Twitter
         % Pavalanathan & Eisenstein (2015) looked at over 200 lexical variables, treating them as binary options of either being present or absent, to examine the influence of audience on language use on Twitter
         % Bamman et al. (2014) looked at 10,000 lexical items in their analysis of gender on Twitter, though they used these items a bit differently from how they would be used in a traditional variationist study
