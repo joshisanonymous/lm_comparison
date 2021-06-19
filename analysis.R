@@ -37,7 +37,7 @@ calculateKL <- function(alignedLMsDf) {
 
 # Calculate cosine similarity from the correct vectors
 calculateCosSim <- function(alignedLMsDf) {
-  cosine_dist(alignedLMsDf[,2], alignedLMsDf[,3], testNA = FALSE) 
+  cosine_dist(alignedLMsDf[,2], alignedLMsDf[,3], testNA = FALSE)
 }
 
 ## Merge LMs
