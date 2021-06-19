@@ -12,6 +12,8 @@
           % Bell (1984) claimed that most linguistic variables are markers (Labov 1972) (152), but that is not necessarily still the case
           % Stereotypes (Labov 1972) and variables that have obtained 3rd order indexicality (Silverstein 2003) have been proposed, each roughly referring to variables that are salient enough to receive overt commentary, so the notion that variables can be this salient is widely accepted
           % The process of enregisterment of Pittsburghese has been examined largely in terms of the growing salience of variables (Johnstone et al. 2006)
+          % [Possibly] give examples of where a small number of salient variables has been useful
+            % Differentiating between "smooth operators", "alley saunterers", and "cosmopolitans" in China (Zhang 2005)
           % Indices have sometimes been used to determine saliency (Podesva 2011:237), but explicit commentary and perceptual studies are perhaps the best way, and latter have indeed become common in recent times
             % These studies often take experimental approaches, instead of the traditional observational variationist studies, using eye-tracking (D'Onofrio 2015), matched-guise experiments (Campbell-Kibler 2009; Delforge 2012)
             % Preconceptions of Valley Girls and Californians can impact perceptions of the TRAP vowel (D'Onofrio 2015)
@@ -21,16 +23,31 @@
     % If interested in saliency, being able to compare the distance between varieties holistically with the differences in the use of a few salient variables may still be enlightening, though, and is not currently done
   % Variationist work that has involved looking for clusters of variables or large numbers of variables
     % Clusters
-      % AAVE studies may focus on a small number of variables (e.g., zero copula, habitual be, plural -s, 3rd person present -s, and possessive -s (Rickford & McNair-Knox 1994)), but sometimes look at large numbers of features
+      % AAVE studies may focus on a small number of variables, but sometimes look at large numbers of features
+        % Small number of variables
+          % Zero copula, habitual be, plural -s, 3rd person present -s, and possessive -s in a speaker from the Bay Area (Rickford & McNair-Knox 1994)
+          % Zero copula, (ing), (t/d) deletion, (r), word-final cluster reduction, and prosody in MLK Jr.'s speech (Wolfram et al. 2016)
         % The dialect density measure (DDM), developed in research on speech pathology and education, involves counting the frequency of features and has been employed in the study of variation in AAE using 32 different features (Van Hofwegen & Wolfram 2010)
         % Similarly, a set of 25 AAVE features as used by gay British men on Twitter have been analyzed according to frequency (Ilbury 2020)
         % Also on Twitter, 30+ non-standard spellings thought to be associated with AAVE have been analyzed in order to draw AAVE dialect maps in the US (Jones 2015)
-      % Studies that look at systems like vowel systems
-        % Guy's work, although the purpose is different
-    % Variationist work in CMC that brings in many more variables
-      % CMC definition and characteristics (maybe just a paragraph)
+      % Studies that look at systems
+        % Vowel systems or at least good chunks of vowel systems
+          % This has been done since the foundational variationist work in NYC (Labov 1966) and has continued in studies of other areas such as Belfast (Milroy 1980), King of Prussia (Payne 1980), Sydney (Horvath & Sankoff 1987), the Detroit area (Eckert 2000), Philadelphia (Eckert & Labov 2017)
+        % Other systems
+          % A large amount of the pronoun system of Louisiana French speakers in Houma (Rottet 1995)
+          % Parts of the verbal morphology system and copula system in Cajun English (Dubois & Horvath 2003)
+        % The covariation of several variables in Brazilian Portuguese in Rio de Janeiro has been examined to corroborate the existence of distinctive sociolects (Guy 2013)
+          % This approaches the idea of drawing comparisons between varieties, but that was not really the goal, hence only four linguistic variables were studied as those were socially stratified (Guy 2013:64-65)
+    % Variationist work that brings in many more variables
+      % Technological advances have made processing large amounts of data much easier and so has made analyzing many variables at once much easier
+        % There is more access to data
+          % Not only have corpora created through sociolinguistic interviews been collected since at least the 1960s, large swaths of existing written language have been digitized (e.g., Google Books, BNC, COCA, Brown)
+          % Data mining social media has made collecting large contemporary corpora more the question of what's ethical much more prominent than the question of how to obtain data (see D'Arcy & Young 2012 for some focused discussion)
+            % Corpora for Twitter, for instance, have reached sizes such as 62 million tweets (Hong et al. 2011:519) or 114 million tweets (Eisenstein 2013:13) or even 924 million tweets (Huang et al. 2016:244)
+        % The field of natural language processing (NLP) has led to the development of better and better tools
+          % 
       % What sort of variables are used and which group distinctions have been drawn
-      % This is holistic, but is it holistic enough?
+      % This is fairly holistic, but is it holistic enough?
         % A lot of these studies are really only looking at lexical variation even though they include many variables
   % An even more holistic approach is to use character n-gram and word n-gram language models
     % This has been used in classifiers in NLP for the task of language identification and language variety identification
