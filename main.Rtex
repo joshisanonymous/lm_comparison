@@ -1,3 +1,45 @@
+%%%%%%%%%%%%%%%%%%%%%%%%
+% Compile with XeLaTeX %
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass{article}
+  % Packages and settings
+  \usepackage{fontspec}
+    \setmainfont{Charis SIL}
+  \usepackage[style=apa, backend=biber]{biblatex}
+    \addbibresource{References.bib}
+  \usepackage{hyperref}
+    \hypersetup{colorlinks=true, allcolors=blue}
+  \usepackage[group-minimum-digits=4, group-separator={,}]{siunitx}
+  \usepackage{enumitem}
+
+  % Document information
+  \title{Using language models for holistic language variety comparisons\footnote{
+    Data and code available at \url{https://osf.io/9cjpw/}.
+  }}
+  \author{Joshua McNeill}
+  \date{\today}
+
+  % New commands
+  \newcommand{\orth}[1]{$\langle$#1$\rangle$}
+  \newcommand{\lexi}[1]{\textit{#1}}
+  \newcommand{\gloss}[1]{`#1'}
+
+\begin{document}
+  % <<settings_load_scripts, echo = FALSE>>=
+  % read_chunk("analysis.R")
+  % opts_chunk$set(echo = FALSE,
+  %                warning = FALSE,
+  %                message = FALSE,
+  %                results = "asis",
+  %                fig.height = 3,
+  %                fig.width = 5)
+  % @
+  \maketitle
+  \section{Introduction}
+    \label{sec:intro}
+    
+
 % Introduction
   % Variationist work has traditionally focused on a handful of bellweather variables and generalized out from there.
     % This is the case despite the more holistic approaches from work in dialectology that came before.
@@ -92,6 +134,8 @@
       % Language models in NLP are, after all, essentially just probability distributions over some set of symbols
   % Research question
     % Are n-gram language models useful for quantifying the linguistic distance between varieties in a more holistic way than has been previously possible?
+  \section{Methods}
+    \label{sec:meths}
 % Methods
   % Data collection
     % The europarl corpus
@@ -129,6 +173,8 @@
       % Both of these show essentially the same thing (i.e., how similar/different two distributions are), but the former is easier to interpret and the latter makes comparisons between language pairs easier as values are always between -1 and 1
       % These are calculated for like-models (e.g., word unigram to word unigram, character 4-gram to character 4-gram, etc.)
         % This makes it possible to see how distant two varieties are on different linguistic levels
+  \section{Results}
+    \label{sec:results}
 % Results
   % europarl baseline results
     % What are the KL divergence and cosine similarity values when comparing French and English?
@@ -136,6 +182,8 @@
     % What are the KL divergence and cosine similarity values when comparing English-English comparisons and French-French comparisons?
       % What about when comparing different model types? (Look at combining all models and looking at models individually)
   % [After finishing the QP1 version of this,] do the same for the Twitter data between detected communities
+  \section{Discussion}
+    \label{sec:discuss}
 % Discussion
   % This technique for comparing varieties holistically appears to work, but there are some limitations to consider and questions left unanswered
     % Are the language models used here the right models?
@@ -156,3 +204,7 @@
       % It is not evident that such a small difference is noticeable at all, even subconsciously, by speakers of these varieties
     % If the differences found between two varieties are not salient on any level, does it actually make sense to speak of them as two separate varieties?
       % This question cannot be answered here, but it is at least a question that can now be examined by comparing the results from a holistic technique as used here to results for the same data from a more traditional, fine-grained analysis
+  \section{Conclusion}
+    \label{sec:conc}
+  \printbibliography
+\end{document}
