@@ -38,33 +38,52 @@
   \maketitle
   \section{Introduction}
     \label{sec:intro}
-    
+    One of the goals of scientific research is to discover generalizable facts, and work on language variation is no different.
+    Variationists are often interested in describing language varieties and distinguishing between language varieties.
+    This task is typically accomplished by analyzing several salient linguistic variables in fine detail and either generalizing to whole varieties from these several variables.
+    The focus on deeply analyzing a small number of variables has advanced the understanding of language variation in more ways than can be mentioned here.
+    While this paradigm shift from the broad analyses of many variables done dialectology, out of which language variation developed, has been valuable, modern technological advances have made it possible to once again consider analyzing broad swaths of linguistic variables at once.
+    The objective for this study is thus to develop a method for holistically quantifying the distance between language varieties in a way that can account for practically all potential linguistic variables.
 
-% Introduction
-  % Variationist work has traditionally focused on a handful of bellweather variables and generalized out from there.
-    % This is the case despite the more holistic approaches from work in dialectology that came before.
-    % Variationist work in CMC has allowed for many more variables to be included at a time, moving back towards a holistic approach.
-    % The objective for this study is to develop a method for comparing the languages of communities holistically, including practically all possible variables.
-  % Variationist work that makes generalizations to communities from small sets of variables
-    % Which group distinctions have been drawn
-    % What assumptions remain that call for more holistic analyses
-      % At least implicitly, the assumption is that a small number of variables are representative of entire varieties
-        % Of course, explicit commentary by community members or perceptual studies may suggest that these small sets of variables are in fact the most salient, but that does not mean that they alone tell us how close or far apart two varieties are
-          % In fact, it's been suggested that saliency is a prerequisite before a linguistic variable can have social meaning (Podesva 2011:235)
-          % Bell (1984) claimed that most linguistic variables are markers (Labov 1972) (152), but that is not necessarily still the case
-          % Stereotypes (Labov 1972) and variables that have obtained 3rd order indexicality (Silverstein 2003) have been proposed, each roughly referring to variables that are salient enough to receive overt commentary, so the notion that variables can be this salient is widely accepted
-          % The process of enregisterment of Pittsburghese has been examined largely in terms of the growing salience of variables (Johnstone et al. 2006)
-          % [Possibly] give examples of where a small number of salient variables has been useful
-            % Differentiating between "smooth operators", "alley saunterers", and "cosmopolitans" in China (Zhang 2005)
-          % Indices have sometimes been used to determine saliency (Podesva 2011:237), but explicit commentary and perceptual studies are perhaps the best way, and latter have indeed become common in recent times
-            % These studies often take experimental approaches, instead of the traditional observational variationist studies, using eye-tracking (D'Onofrio 2015), matched-guise experiments (Campbell-Kibler 2009; Delforge 2012)
-            % Preconceptions of Valley Girls and Californians can impact perceptions of the TRAP vowel (D'Onofrio 2015)
-            % The alveolar (ing) variant has been shown to be judged differently depending on the listener, but there was always a judgement (Campbell-Kibler 2009)
-            % Vowel devoicing in Andean Spanish has been shown to be less noticeable by listeners when they do not want to notice it, as those who denied having the feature still had it at similar rates to those from elsewhere in whom they regularly perceived the feature (Delforge 2012)
-          % The point is that saliency is indeed important when one is interested in social meaning
-    % If interested in saliency, being able to compare the distance between varieties holistically with the differences in the use of a few salient variables may still be enlightening, though, and is not currently done
-  % Variationist work that has involved looking for clusters of variables or large numbers of variables
-    % Clusters
+    Some work on language variation has to already returned to its dialectological roots at least in spirit, and so a look at what has been done recently will help situate the method being proposed here.
+    As such, section \ref{sec:intro_saliency} will discuss some advantages and disadvantages of traditional methods of analyzing language variation to show what can be gained from a more holistic approach, and section \ref{sec:intro_clusters} will review the limits of how holistic such traditional studies tend to get.
+    Section \ref{sec:intro_nlp} will explain a bit of what is done in the field of natural language processing (NLP), and section \ref{sec:intro_nlpimpact} will review how such technological advances have been applied to variationist studies, leading to the inclusion of many more variables than was previously practical.
+
+    \subsection{Generalizing from saliency}
+      \label{sec:intro_saliency}
+      In traditional variationist work, generalizations about whole varieties are sometimes drawn from a relatively small set of linguistic variables, perhaps as few as five.
+      The assumption underlying that makes this possible is that the variables analyzed are salient and so have social meaning and so are what really distinguish varieties.
+      This connection between saliency and social meaning has indeed been acknowledged in variationist literature \parencite[p.~235]{podesva_salience_2011} and has at least been implicit in variationist theory since its foundations.
+
+      \textcite{labov_sociolinguistic_1972} himself introduced the idea of saliency into language variation in proposing the concepts of linguistic variables being either indicators, markers, or stereotypes, the latter two carrying saliency.
+      It was later claimed that most linguistic variables are markers \parencite{bell_language_1984}, carrying saliency but not being explicitly commented on by speakers when describing one variety versus another.
+      The importance of saliency for classifying types of linguistic variables was also part of the concept of orders of indexicality \parencite{silverstein_indexical_2003}, where second and third order indexicals would be somewhat equivalent to markers and stereotypes, respectively, in terms of saliency.
+
+      Saliency has not only been a consistent aspect of variationist theorizing, but it has proved useful for analyses.
+      One example is in analyzing how varieties comes to be social constructs, recognized as existing in the minds of speakers, which has been referred to in language variation as enregisterment \parencite{agha_social_2003}.
+      In essence, the process of enregisterment is based on features increasing in saliency.
+      This was initially applied to Received Pronunciation \parencite{agha_social_2003} but has also been applied to the development of Pittsburghese based mostly on an analysis of (aw) monophthongization, though some other features are discussed also such as the term \lexi{yinz} \gloss{you (pl.)} \parencite{johnstone_mobility_2006}.
+      Additionally, the saliency has been used to distinguish varieties spoken by different groups within a single geographic area in that residents will explicitly describe linguistic features that they associate with each group.
+      This was the case in a study of Beijing where two types of Beijingers and one type of non-Beijinger were associated with one linguistic variable each \parencite{zhang_chinese_2005}.\footnote{
+        Technically, one group, the ``smooth operators'', was associated with two variables, but each variable involved [ɹ] \parencite[pp.~441-444]{zhang_chinese_2005}.
+      }
+
+      The sort of explicit commentary noted in \textcite{zhang_chinese_2005} is one way to establish whether a linguistic variable is salient or not.
+      To quantify such commentary requires developing indices where perhaps certain types of commentary each count in the index or commentary in general is counts as just one item among other types in the index.
+      In fact, saliency has sometimes even been quantified on purely linguistic grounds \parencite[p.~237]{podesva_salience_2011}.\footnote{
+        \textcite{podesva_salience_2011} does of course acknowledge social saliency, as well.
+      } Perhaps a more common way of identifying saliency has come through experimentation, however.
+      Perceptual studies that invovle experimentation fall under paradigms such as eye-tracking \parencite[e.g.,][]{donofrio_persona-based_2015} or matched-guise experiments \parencite[e.g.,][]{campbell-kibler_nature_2009, delforge_nobody_2012}.
+      Findings in such studies include showing that preconceptions of Valley Girls and Californians can impact perceptions of the TRAP vowel \parencite{donofrio_persona-based_2015}, that the alveolar variant of (ing) is judged differently depending on the listener \parencite{campbell-kibler_nature_2009}, and that vowel devoicing in Andean Spanish is less noticeable by listeners when they do not want to notice it, as those who denied having the feature still had it at similar rates to those from elsewhere in whom the feature was regularly perceived \parencite{delforge_nobody_2012}.
+
+      The point is that saliency does indeed exist, can be measured, and carries import for analyses, particularly if one is interested in social meaning.
+      To the extent that varieties are social constructs, it is also a rather safe assumption to say that salient variables are what distinguish varieties as that which is not socially meaningful could not be a defining feature of a social construct. % Can I get a reference for this?
+      However, when looking at varieties more as concrete systems that are coherent, consistent, and objectively different from each other, comparing salienct variables alone may miss even a large number of distinctions that a more holistic comparison could capture.
+      Furthermore, being able to compare between varieties both holistically and by looking at only salient variables opens the possibility of finding contrasts that may be enlightening, such as the possibility that two varieties different in many more ways than what is noticeable to speakers, yet the focus in variationist work has mainly been on salient variables alone.
+
+    \subsection{Looking at clusters of linguistic variables}
+      \label{sec:intro_clusters}
+    % The largest scale that traditional methods have reach has involved looking for clusters or systems of variables
       % AAVE studies may focus on a small number of variables, but sometimes look at large numbers of features
         % Small number of variables
           % Zero copula, habitual be, plural -s, 3rd person present -s, and possessive -s in a speaker from the Bay Area (Rickford & McNair-Knox 1994)
@@ -80,6 +99,8 @@
           % Parts of the verbal morphology system and copula system in Cajun English (Dubois & Horvath 2003)
         % The covariation of several variables in Brazilian Portuguese in Rio de Janeiro has been examined to corroborate the existence of distinctive sociolects (Guy 2013)
           % This approaches the idea of drawing comparisons between varieties, but that was not really the goal, hence only four linguistic variables were studied as those were socially stratified (Guy 2013:64-65)
+    \subsection{Advances in natural language processing}
+      \label{sec:intro_nlp}
     % Variationist work that brings in many more variables
       % Technological advances have made processing large amounts of data much easier and so has made analyzing many variables at once much easier
         % There is more access to data
@@ -105,106 +126,117 @@
             % Admittedly, it is still prudent to go through samples of the data for quality assurance, but doing so is much quicker than coding by hand
             % Perhaps the biggest yet simplest advancement, particularly when considering how many variables can be analyzed at once, has just been counting
               % A few lines of basic code can return counts for tokens of linguistic variables from millions to even billions of words of text
-      % Variationist studies that have looked at large numbers of linguistic variables at once
-        % Somewhat between the a very large number of linguistic variables and the more traditional number of variables is Grieve's work
-          % For example, Grieve et al. (2018) looked at 54 lexical items on Twitter that they judged to be innovations and mapped their geographic diffusion over time
-        % Huang et al. (2016) looked at 211 sets of lexical items to examine regional variation throughout the US as expressed on Twitter
-        % Pavalanathan & Eisenstein (2015) looked at over 200 lexical variables, treating them as binary options of either being present or absent, to examine the influence of audience on language use on Twitter
-        % Bamman et al. (2014) looked at 10,000 lexical items in their analysis of gender on Twitter, though they used these items a bit differently from how they would be used in a traditional variationist study
-          % The lexical items were first used to train a classifier to identify the gender of Twitter users
-          % They then looked at which words were most strongly associated with one gender or the other, which is where the analysis more resembles traditional studies
-          % Their methods are not unlike those that will be proposed here in that they also include a marriage of NLP and sociolinguistics
-        % In some ways, these studies harken back to the early days of dialectology where the goal was to produce Atlases that demonstrated the boundaries between regional varieties such as the Atlas linguistique de la France for French (Gilliéron & Edmond 1902) or the Sprach-Atlas for German (Wenker 1881/2020)
-          % New technologies give modern work the opportunities for insights that were not possible in the past
-          % A similar leap in research possibilities based on technological advancement that has been noted is the availability of tape recorders, which made socioilnguistic research based on real speech starting in the 1960s a reality (Milroy & Milroy 1985:52)
-      % This is fairly holistic, but is it holistic enough?
-        % A lot of these studies are really only looking at lexical variation even though they include many variables
-        % A more holistic approach would include more than individual lexical items, even if very many individual lexical items are considered
-          % How are other linguistic levels captured?
-  % An even more holistic approach is to use character n-gram and word n-gram language models
-    % n-gram language models take every unique n number of consecutive symbols in a corpus and counts up how often they occur
-      % The symbols typically used are words or characters, but any symbol can be used
-        % Given a corpus tagged for part-of-speech, consecutive parts-of-speech may be used, for instance
-        % Given a corpus fully transcribed into IPA, consecutive IPA symbols may be used
-      % An example might be a word bigram model
-        % For a sentence such as "this is a sentence", the word bigrams contained would be "this is", "is a", and "a sentence"
-        % Alternatively, a character 4-gram of the same sentence would yield "this, "his ", "is i", "s is", " is ", and so on
-    % n-gram language models have been used in classifiers in NLP for the task of language identification and language variety identification, as mentioned above
-    % The success of these models in distinguishing between even minorly different language varieties suggests that they can be compared to quantify the linguistic distance between two varieties, as well
-      % Language models in NLP are, after all, essentially just probability distributions over some set of symbols
-  % Research question
-    % Are n-gram language models useful for quantifying the linguistic distance between varieties in a more holistic way than has been previously possible?
+
+    \subsection{The impact of NLP on language variation research}
+      \label{sec:intro_nlpimpact}
+    % Variationist studies that have looked at large numbers of linguistic variables at once
+      % Somewhat between the a very large number of linguistic variables and the more traditional number of variables is Grieve's work
+        % For example, Grieve et al. (2018) looked at 54 lexical items on Twitter that they judged to be innovations and mapped their geographic diffusion over time
+      % Huang et al. (2016) looked at 211 sets of lexical items to examine regional variation throughout the US as expressed on Twitter
+      % Pavalanathan & Eisenstein (2015) looked at over 200 lexical variables, treating them as binary options of either being present or absent, to examine the influence of audience on language use on Twitter
+      % Bamman et al. (2014) looked at 10,000 lexical items in their analysis of gender on Twitter, though they used these items a bit differently from how they would be used in a traditional variationist study
+        % The lexical items were first used to train a classifier to identify the gender of Twitter users
+        % They then looked at which words were most strongly associated with one gender or the other, which is where the analysis more resembles traditional studies
+        % Their methods are not unlike those that will be proposed here in that they also include a marriage of NLP and sociolinguistics
+      % In some ways, these studies harken back to the early days of dialectology where the goal was to produce Atlases that demonstrated the boundaries between regional varieties such as the Atlas linguistique de la France for French (Gilliéron & Edmond 1902) or the Sprach-Atlas for German (Wenker 1881/2020)
+        % New technologies give modern work the opportunities for insights that were not possible in the past
+        % A similar leap in research possibilities based on technological advancement that has been noted is the availability of tape recorders, which made socioilnguistic research based on real speech starting in the 1960s a reality (Milroy & Milroy 1985:52)
+
+    \subsection{Generalizing from $n$-gram language models}
+      \label{sec:intro_lmproposal}
+    % These NLP-advantaged studies are fairly holistic, but are they holistic enough?
+      % A lot of these studies are really only looking at lexical variation even though they include many variables
+      % A more holistic approach would include more than individual lexical items, even if very many individual lexical items are considered
+      % How are other linguistic levels captured?
+    % An even more holistic approach is to use character n-gram and word n-gram language models
+      % n-gram language models take every unique n number of consecutive symbols in a corpus and counts up how often they occur
+        % The symbols typically used are words or characters, but any symbol can be used
+          % Given a corpus tagged for part-of-speech, consecutive parts-of-speech may be used, for instance
+          % Given a corpus fully transcribed into IPA, consecutive IPA symbols may be used
+        % An example might be a word bigram model
+          % For a sentence such as "this is a sentence", the word bigrams contained would be "this is", "is a", and "a sentence"
+          % Alternatively, a character 4-gram of the same sentence would yield "this, "his ", "is i", "s is", " is ", and so on
+      % n-gram language models have been used in classifiers in NLP for the task of language identification and language variety identification, as mentioned above
+      % The success of these models in distinguishing between even minorly different language varieties suggests that they can be compared to quantify the linguistic distance between two varieties, as well
+        % Language models in NLP are, after all, essentially just probability distributions over some set of symbols
+    % Research question
+      % Are n-gram language models useful for quantifying the linguistic distance between varieties in a more holistic way than has been previously possible?
+
   \section{Methods}
     \label{sec:meths}
-% Methods
-  % Data collection
-    % The europarl corpus
-      % This is a parallel corpus that can be used to set the baseline for what one should expect between what are generally viewed as completely different languages and between one variety at different times
-        % For different languages: built models from the English and French documents
-        % For one variety: built models from the first and second halves of the English documents
-        % In effect, this data can be said to be coded for language and text section
-    % [Twitter data will be left out for the QP1 version] Twitter data
-      % Characteristics of Twitter
-        % What makes this appropriate for this study
-      % Tweets collected from Louisiana and filtered for discussion of race and ethnicity
-        % Narrowing the type of data analyzed helps ensure that distinctions between communities won't be the result of simply different topics of conversation
-        % The race/ethnicity situation in Louisiana has been analyzed before and is complex, so narrowing in this way may provide insights into social questions, though that's not the primary objective of this study
-      % Coding
-        % The goal here is to compare linguistic distance between communities
-        % Community detection
-          % Communities are conceptualized on structural grounds in that those who interact with the same people on a consistent basis are considered to form a community
-            % In this case, a directed tweet counts as the sender interacting with the receiver
-            % The number of directed tweets between two users counts as the amount of interaction
-          % Blondel et al.'s community detection algorithm is used
-        % Language models will be built for a handful of communities which contain substantial numbers of tweets about race/ethnicity
-          % Race/ethnicity are chosen because Louisiana has a complex history in this regard
-            % Historically was not divided by Black and White, instead having Black, Creole, and White, but has come to be Black=Creole vs White=Cajun today
-          % Race/ethnicity tweets will be detected using a classifier trained on 1% of the total tweets collected (~40,000)
-          % There is some subjectivity about what exactly constitutes discussion of race/ethnicity
-            % Include some examples of tweets that are unarguably about race/ethnicity and some that are not
-  % Language models
-    % Following Duvenhage (2019) due to his success for DSL 17, both word and character n-grams were trained, unigrams and bigrams for the former, bigrams, 4-grams, and 6-grams for the latter.
-      % These models each capture different levels of the language, so I conceptualize them as follows:
-        % Word unigrams: lexicon
-        % Word bigrams: syntax (or at least some small amount of syntax)
-        % Character n-grams: orthography and morphology
-  % Analysis
-    % Two statistics are used: KL divergence and cosine similarity
-      % Both of these show essentially the same thing (i.e., how similar/different two distributions are), but the former is easier to interpret and the latter makes comparisons between language pairs easier as values are always between -1 and 1
-      % These are calculated for like-models (e.g., word unigram to word unigram, character 4-gram to character 4-gram, etc.)
-        % This makes it possible to see how distant two varieties are on different linguistic levels
+  % Methods
+    % Data collection
+      % The europarl corpus
+        % This is a parallel corpus that can be used to set the baseline for what one should expect between what are generally viewed as completely different languages and between one variety at different times
+          % For different languages: built models from the English and French documents
+          % For one variety: built models from the first and second halves of the English documents
+          % In effect, this data can be said to be coded for language and text section
+      % [Twitter data will be left out for the QP1 version] Twitter data
+        % Characteristics of Twitter
+          % What makes this appropriate for this study
+        % Tweets collected from Louisiana and filtered for discussion of race and ethnicity
+          % Narrowing the type of data analyzed helps ensure that distinctions between communities won't be the result of simply different topics of conversation
+          % The race/ethnicity situation in Louisiana has been analyzed before and is complex, so narrowing in this way may provide insights into social questions, though that's not the primary objective of this study
+        % Coding
+          % The goal here is to compare linguistic distance between communities
+          % Community detection
+            % Communities are conceptualized on structural grounds in that those who interact with the same people on a consistent basis are considered to form a community
+              % In this case, a directed tweet counts as the sender interacting with the receiver
+              % The number of directed tweets between two users counts as the amount of interaction
+            % Blondel et al.'s community detection algorithm is used
+          % Language models will be built for a handful of communities which contain substantial numbers of tweets about race/ethnicity
+            % Race/ethnicity are chosen because Louisiana has a complex history in this regard
+              % Historically was not divided by Black and White, instead having Black, Creole, and White, but has come to be Black=Creole vs White=Cajun today
+            % Race/ethnicity tweets will be detected using a classifier trained on 1% of the total tweets collected (~40,000)
+            % There is some subjectivity about what exactly constitutes discussion of race/ethnicity
+              % Include some examples of tweets that are unarguably about race/ethnicity and some that are not
+    % Language models
+      % Following Duvenhage (2019) due to his success for DSL 17, both word and character n-grams were trained, unigrams and bigrams for the former, bigrams, 4-grams, and 6-grams for the latter.
+        % These models each capture different levels of the language, so I conceptualize them as follows:
+          % Word unigrams: lexicon
+          % Word bigrams: syntax (or at least some small amount of syntax)
+          % Character n-grams: orthography and morphology
+    % Analysis
+      % Two statistics are used: KL divergence and cosine similarity
+        % Both of these show essentially the same thing (i.e., how similar/different two distributions are), but the former is easier to interpret and the latter makes comparisons between language pairs easier as values are always between -1 and 1
+        % These are calculated for like-models (e.g., word unigram to word unigram, character 4-gram to character 4-gram, etc.)
+          % This makes it possible to see how distant two varieties are on different linguistic levels
+
   \section{Results}
     \label{sec:results}
-% Results
-  % europarl baseline results
-    % What are the KL divergence and cosine similarity values when comparing French and English?
-      % What about when comparing different model types? (Look at combining all models and looking at models individually)
-    % What are the KL divergence and cosine similarity values when comparing English-English comparisons and French-French comparisons?
-      % What about when comparing different model types? (Look at combining all models and looking at models individually)
-  % [After finishing the QP1 version of this,] do the same for the Twitter data between detected communities
+  % Results
+    % europarl baseline results
+      % What are the KL divergence and cosine similarity values when comparing French and English?
+        % What about when comparing different model types? (Look at combining all models and looking at models individually)
+      % What are the KL divergence and cosine similarity values when comparing English-English comparisons and French-French comparisons?
+        % What about when comparing different model types? (Look at combining all models and looking at models individually)
+    % [After finishing the QP1 version of this,] do the same for the Twitter data between detected communities
+
   \section{Discussion}
     \label{sec:discuss}
-% Discussion
-  % This technique for comparing varieties holistically appears to work, but there are some limitations to consider and questions left unanswered
-    % Are the language models used here the right models?
-    % How big do corpora need to be in order for this technique to work?
-    % How does this relate to traditional work that typically examines only a few linguistic variables but in great detail?
-  % Are the models used truly the best language models that could be used here?
-    % For instance, KL divergence here is calculated based on the empirical probabilities for each n-gram in each model (i.e., relative frequencies)
-    % An alternative would be to use something like term frequency minus inverse document frequency (TF-IDF), which is commonly used in NLP and is meant to give the greatest weight in a model to n-grams that are frequent in a small number of documents
-      % Eisenstein (2014) took a similar approach when identifying terms of import for differentiating between dialects on Twitter (5)
-    % If, however, the type of models used here are not optimal, the approach can still be just as easily applied to other types of language models, both existing and yet to be proposed types
-  % Related to whether these are the best types of language models to use for this technique of comparing varieties is the question of how large the corpora that are used to generate the language models ought to be
-    % The europarl corpora are quite large, which presumably means there would not be a great difference between something like an empirical probability and any other sort of calculated probability
-    % There are, however, cases where a researcher might want to apply the technique when using much smaller corpora
-    % There may very well be a threshold where different language model types are more or less useful depending on whether the corpora size is above or below the threshold
-      % This is something that cannot be addressed in the present study, but would be worthwhile to examine in future work
-  % As was discussed earlier, salient linguistic variables may be far more important than other variables
-    % For instance, the technique used here might find two varieties differ in that one variety uses the preposition "for" where another uses "of" sometimes
-      % It is not evident that such a small difference is noticeable at all, even subconsciously, by speakers of these varieties
-    % If the differences found between two varieties are not salient on any level, does it actually make sense to speak of them as two separate varieties?
-      % This question cannot be answered here, but it is at least a question that can now be examined by comparing the results from a holistic technique as used here to results for the same data from a more traditional, fine-grained analysis
+  % Discussion
+    % This technique for comparing varieties holistically appears to work, but there are some limitations to consider and questions left unanswered
+      % Are the language models used here the right models?
+      % How big do corpora need to be in order for this technique to work?
+      % How does this relate to traditional work that typically examines only a few linguistic variables but in great detail?
+    % Are the models used truly the best language models that could be used here?
+      % For instance, KL divergence here is calculated based on the empirical probabilities for each n-gram in each model (i.e., relative frequencies)
+      % An alternative would be to use something like term frequency minus inverse document frequency (TF-IDF), which is commonly used in NLP and is meant to give the greatest weight in a model to n-grams that are frequent in a small number of documents
+        % Eisenstein (2014) took a similar approach when identifying terms of import for differentiating between dialects on Twitter (5)
+      % If, however, the type of models used here are not optimal, the approach can still be just as easily applied to other types of language models, both existing and yet to be proposed types
+    % Related to whether these are the best types of language models to use for this technique of comparing varieties is the question of how large the corpora that are used to generate the language models ought to be
+      % The europarl corpora are quite large, which presumably means there would not be a great difference between something like an empirical probability and any other sort of calculated probability
+      % There are, however, cases where a researcher might want to apply the technique when using much smaller corpora
+      % There may very well be a threshold where different language model types are more or less useful depending on whether the corpora size is above or below the threshold
+        % This is something that cannot be addressed in the present study, but would be worthwhile to examine in future work
+    % As was discussed earlier, salient linguistic variables may be far more important than other variables
+      % For instance, the technique used here might find two varieties differ in that one variety uses the preposition "for" where another uses "of" sometimes
+        % It is not evident that such a small difference is noticeable at all, even subconsciously, by speakers of these varieties
+      % If the differences found between two varieties are not salient on any level, does it actually make sense to speak of them as two separate varieties?
+        % This question cannot be answered here, but it is at least a question that can now be examined by comparing the results from a holistic technique as used here to results for the same data from a more traditional, fine-grained analysis
+
   \section{Conclusion}
     \label{sec:conc}
+
   \printbibliography
 \end{document}
