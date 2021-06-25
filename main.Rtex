@@ -83,22 +83,36 @@
 
     \subsection{Looking at clusters of linguistic variables}
       \label{sec:intro_clusters}
-    % The largest scale that traditional methods have reach has involved looking for clusters or systems of variables
-      % AAVE studies may focus on a small number of variables, but sometimes look at large numbers of features
-        % Small number of variables
-          % Zero copula, habitual be, plural -s, 3rd person present -s, and possessive -s in a speaker from the Bay Area (Rickford & McNair-Knox 1994)
-          % Zero copula, (ing), (t/d) deletion, (r), word-final cluster reduction, and prosody in MLK Jr.'s speech (Wolfram et al. 2016)
-        % The dialect density measure (DDM), developed in research on speech pathology and education, involves counting the frequency of features and has been employed in the study of variation in AAE using 32 different features (Van Hofwegen & Wolfram 2010)
-        % Similarly, a set of 25 AAVE features as used by gay British men on Twitter have been analyzed according to frequency (Ilbury 2020)
-        % Also on Twitter, 30+ non-standard spellings thought to be associated with AAVE have been analyzed in order to draw AAVE dialect maps in the US (Jones 2015)
-      % Studies that look at systems
-        % Vowel systems or at least good chunks of vowel systems
-          % This has been done since the foundational variationist work in NYC (Labov 1966) and has continued in studies of other areas such as Belfast (Milroy 1980), King of Prussia (Payne 1980), Sydney (Horvath & Sankoff 1987), the Detroit area (Eckert 2000), Philadelphia (Eckert & Labov 2017)
-        % Other systems
-          % A large amount of the pronoun system of Louisiana French speakers in Houma (Rottet 1995)
-          % Parts of the verbal morphology system and copula system in Cajun English (Dubois & Horvath 2003)
-        % The covariation of several variables in Brazilian Portuguese in Rio de Janeiro has been examined to corroborate the existence of distinctive sociolects (Guy 2013)
-          % This approaches the idea of drawing comparisons between varieties, but that was not really the goal, hence only four linguistic variables were studied as those were socially stratified (Guy 2013:64-65)
+      Language variation studies have of course examined clusters of variables and systems of interrelated variables.
+      The focus in these cases is still linguistic variables that are thought to be salient, though the number of variables analyzed has at times approached a relatively larger scale.
+      This is particularly true when the analysis focuses on ``features'', which are effectively treated as linguistic variables that have two realizations: present or absent.
+
+      Studies of African-American English (AAE)\footnote{
+        I am including what researchers may refer to as African-American Vernacular English (AAVE) under this term as the distinction is not particularly important for the present study.
+      }, perhaps due simply to there being so many, include both analyses of small clusters of variables but also larger sets of features.
+      In some cases, there is an apparent relationship between the variables, such as in \textcite{rickford_addressee-_1994} where the analysis included the zero copula, habitual invariant \lexi{be}, the plural \lexi{-s} morpheme, the 3rd person present \lexi{-s} verbal inflection, and the possessive \lexi{-s} morpheme.
+      The first two of these both implicate the verb \lexi{to be} whereas the last three all involve homophonous suffixes.
+      Such relationships are not always present, however, as in an examination of Martin Luther King, Jr's language that included the zero copula, (ing), (t/d) deletion, (r), word-final consonant cluster reduction, and prosody \parencite{wolfram_significance_2016}.
+      If a structural relationship exists between these linguistic variables, it is not evident at first glance.
+
+      When sets of features from AAE are studied, the number of variables grows substantially.
+      In the case of \textcite{van_hofwegen_coming_2010}, 32 features were tallied in individuals' speech as a way to measure how heavily AAE their speech was.
+      The measure itself, along with the chosen features, was developed in research on speech pathology and education and where it is referred to as the dialect density measure (DDM).
+      While the proposal of an appellation such as DDM suggests something of a novel approach, similar measures have in fact been used elsewhere, as well.
+      In a study looking into the use of AAE features in gay British men on Twitter, 25 AAE features were analyzed according to their frequencies \parencite{ilbury_sassy_2020}.
+      Also involving Twitter, over 30 non-standard spellings thought to be associated with AAE were analyzed in order to draw AAE dialect maps in the US \parencite{jones_toward_2015}.
+      While these feature-conceptualized studies include far more than the typical five to seven clustered variables, they still fall well short of including all possible variables in these varieties.
+
+      If studies of AAE sometimes include clusters of linguistic variables that appear structurally related, it is not always clear that this structural relationship is what drove the choice of variables.
+      In many other cases, there is little question that the researchers are interested in a cluster of variables because of their structural relationship.
+      This is particularly evident in examinations of vowel systems or large portions of vowel systems, where there is often though not always a chain shift involved.
+      This has been done since the foundational variationist work in New York City \parencite{labov_social_2006} and has continued in studies of other areas such as Belfast \parencite{milroy_language_1987}, King of Prussia \parencite{payne_factors_1980}, Syndey \parencite{horvath_delimiting_1987}, the Detroit area \parencite{eckert_linguistic_2000}, and Philadelphia \parencite{eckert_phonetics_2017}.
+      Similarly, though without implicating a chain shift, the majority of the pronoun system of Louisiana French as spoken in Houma has been analyzed as a whole \parencite{rottet_language_1995} as well as chunks of the verbal morphology system and and copula system in Cajun English \parencite{dubois_verbal_2003}.
+      Finally, perhaps one of the most explicit treatments of a system of covariation was \citeauthor{guy_cognitive_2013}'s (\citeyear{guy_cognitive_2013}) analysis of Brazilian Portuguese as spoken in Rio de Janeiro which had the explicit goal of examining the existence or non-existence of distinctive sociolects by determining if four linguistic variables covaried.
+      While these sort of studies go further towards covering all the variables of particular linguistic systems, there is once again much left to be described if one wishes to compare the distance between varieties in their entireties.
+      Furthermore, not all subsystems of varieties are contained in such a relatively small number of variables.
+      For instance, it is not possible the lexical system of a variety with five, ten, or even one hundred variables.
+      
     \subsection{Advances in natural language processing}
       \label{sec:intro_nlp}
     % Variationist work that brings in many more variables
