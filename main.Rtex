@@ -112,34 +112,34 @@
       While these sort of studies go further towards covering all the variables of particular linguistic systems, there is once again much left to be described if one wishes to compare the distance between varieties in their entireties.
       Furthermore, not all subsystems of varieties are contained in such a relatively small number of variables.
       For instance, it is not possible the lexical system of a variety with five, ten, or even one hundred variables.
-      
-    \subsection{Advances in natural language processing}
+
+    \subsection{Advances in NLP}
       \label{sec:intro_nlp}
-    % Variationist work that brings in many more variables
-      % Technological advances have made processing large amounts of data much easier and so has made analyzing many variables at once much easier
-        % There is more access to data
-          % Not only have corpora created through sociolinguistic interviews been collected since at least the 1960s, large swaths of existing written language have been digitized (e.g., Google Books, BNC, COCA, Brown)
-          % Data mining social media has made collecting large contemporary corpora more the question of what's ethical much more prominent than the question of how to obtain data (see D'Arcy & Young 2012 for some focused discussion)
-            % Corpora for Twitter, for instance, have reached sizes such as 62 million tweets (Hong et al. 2011:519) or 114 million tweets (Eisenstein 2013:13) or even 924 million tweets (Huang et al. 2016:244)
-        % The field of natural language processing (NLP) has led to the development of better and better tools, some that are particularly useful for expediting variationist analyse
-          % Part-of-speech tagging is another tool that is now widely available
-            % This typically involves training a tagger on some documents that were hand-coded for part-of-speech
-            % Luckily, there are numerous corpora that are already hand-coded that can be used at least for major languages, such as the Brown corpus for English (Kuc̆era & Francis 1967)
-          % Related to part-of-speech tagging is the task of parsing sentences
-            % This is done in much the same way as part-of-speech tagging where some training data is used to train a parser that can then automatically parse new sentences
-            % Again, luckily, there are already many corpora that have already been parsed by hand, referred to as treebanks, such as the Penn Treebank for English (Prasad et al. 2019)
-            % These tools are useful for variationists looking at syntax but also potentially any other variationist whose linguistic variables may be syntactically conditioned
-          % Classifiers are trained to accomplish a number of tasks that are useful for coding documents
-            % "Documents" are understood in this case to be any amount of text that acts like a unit, be it a tweet or a book
-            % A classic example of a classifier task is identifying the topic of a document
-              % The goal is often solving problems such as spotting email spam (Dada et al. 2019), news topic classification, opinion mining, and so on (Minaee et al. 2021)
-            % One classification task that is relevant here: language variety identification
-              % The goal is to identify the variety used in a document when those varieties are relatively similar
-              % This has been worked on for Arabic varieties (Bouamor et al. 2019), Balkan languages, Indonesian vs Malaysian, Portuguese varieties, Spanish varieties, French varieties, and Persian vs Dari (Zampieri et al. 2017)
-          % These tools help variationists relegate much work that used to be done by hand to a machine
-            % Admittedly, it is still prudent to go through samples of the data for quality assurance, but doing so is much quicker than coding by hand
-            % Perhaps the biggest yet simplest advancement, particularly when considering how many variables can be analyzed at once, has just been counting
-              % A few lines of basic code can return counts for tokens of linguistic variables from millions to even billions of words of text
+      A large part of what has made it possible to analyze much larger numbers of linguistic variables at once is the continued development of NLP technology.
+    % Technological advances have made processing large amounts of data much easier and so has made analyzing many variables at once much easier
+      % There is more access to data
+        % Not only have corpora created through sociolinguistic interviews been collected since at least the 1960s, large swaths of existing written language have been digitized (e.g., Google Books, BNC, COCA, Brown)
+        % Data mining social media has made collecting large contemporary corpora more the question of what's ethical much more prominent than the question of how to obtain data (see D'Arcy & Young 2012 for some focused discussion)
+          % Corpora for Twitter, for instance, have reached sizes such as 62 million tweets (Hong et al. 2011:519) or 114 million tweets (Eisenstein 2013:13) or even 924 million tweets (Huang et al. 2016:244)
+      % The field of natural language processing (NLP) has led to the development of better and better tools, some that are particularly useful for expediting variationist analyse
+        % Part-of-speech tagging is another tool that is now widely available
+          % This typically involves training a tagger on some documents that were hand-coded for part-of-speech
+          % Luckily, there are numerous corpora that are already hand-coded that can be used at least for major languages, such as the Brown corpus for English (Kuc̆era & Francis 1967)
+        % Related to part-of-speech tagging is the task of parsing sentences
+          % This is done in much the same way as part-of-speech tagging where some training data is used to train a parser that can then automatically parse new sentences
+          % Again, luckily, there are already many corpora that have already been parsed by hand, referred to as treebanks, such as the Penn Treebank for English (Prasad et al. 2019)
+          % These tools are useful for variationists looking at syntax but also potentially any other variationist whose linguistic variables may be syntactically conditioned
+        % Classifiers are trained to accomplish a number of tasks that are useful for coding documents
+          % "Documents" are understood in this case to be any amount of text that acts like a unit, be it a tweet or a book
+          % A classic example of a classifier task is identifying the topic of a document
+            % The goal is often solving problems such as spotting email spam (Dada et al. 2019), news topic classification, opinion mining, and so on (Minaee et al. 2021)
+          % One classification task that is relevant here: language variety identification
+            % The goal is to identify the variety used in a document when those varieties are relatively similar
+            % This has been worked on for Arabic varieties (Bouamor et al. 2019), Balkan languages, Indonesian vs Malaysian, Portuguese varieties, Spanish varieties, French varieties, and Persian vs Dari (Zampieri et al. 2017)
+        % These tools help variationists relegate much work that used to be done by hand to a machine
+          % Admittedly, it is still prudent to go through samples of the data for quality assurance, but doing so is much quicker than coding by hand
+          % Perhaps the biggest yet simplest advancement, particularly when considering how many variables can be analyzed at once, has just been counting
+            % A few lines of basic code can return counts for tokens of linguistic variables from millions to even billions of words of text
 
     \subsection{The impact of NLP on language variation research}
       \label{sec:intro_nlpimpact}
