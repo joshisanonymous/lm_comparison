@@ -115,14 +115,23 @@
 
     \subsection{Advances in NLP}
       \label{sec:intro_nlp}
-      A large part of what has made it possible to analyze much larger numbers of linguistic variables at once is the continued development of NLP technology.
-    % Technological advances have made processing large amounts of data much easier and so has made analyzing many variables at once much easier
-      % There is more access to data
-        % Not only have corpora created through sociolinguistic interviews been collected since at least the 1960s, large swaths of existing written language have been digitized (e.g., Google Books, BNC, COCA, Brown)
-        % Data mining social media has made collecting large contemporary corpora more the question of what's ethical much more prominent than the question of how to obtain data (see D'Arcy & Young 2012 for some focused discussion)
-          % Corpora for Twitter, for instance, have reached sizes such as 62 million tweets (Hong et al. 2011:519) or 114 million tweets (Eisenstein 2013:13) or even 924 million tweets (Huang et al. 2016:244)
-      % The field of natural language processing (NLP) has led to the development of better and better tools, some that are particularly useful for expediting variationist analyse
-        % Part-of-speech tagging is another tool that is now widely available
+      A significant part of what has made it possible to analyze much larger numbers of linguistic variables at once is the continued development of NLP technology.
+      Indeed, not only has development in NLP become more and more active, NLP has also made its way into other fields. This includes sociolinguistics, where the resulting interdisciplinary field has become known as computational sociolinguistics \parencite{nguyen_computational_2016}.
+      While a thorough discussion of NLP is beyond the scope of the present study, a brief overview of the basics of what can be done and how is relevant to make the holistic method of comparing varieties proposed here more understandable.
+      NLP has certainly found its way into language variation, but not every variationist is a computational sociolinguist.
+
+      The building of large corpora is not purely an activity related to NLP, but they are central to the development of NLP tools and sizes have exploded over the last decade.
+      Sociolinguistic interviews themselves yield corpora, of course, and the first corpus to be over one million words of written English, the Brown corpus, was collected already in the 1960s \parencite{francis_brown_1964}.
+      Efforts to digitize written language have continued through the present day with corpora such as the British National Corpus (BNC) consisting over just under 100 million words \parencite{burnard_reference_2007}, the Corpus of Contemporary American English (COCA) consisting of over 400 million words at its start \parencite{davies_corpus_2010}, and Google Books consisting of over 40 million books \parencite{lee_15_2019}.
+
+      In addition to digitized written language, data mining techniques have made collecting large contemporary corpora from social media platforms so prevalent that there is more of a question about the ethics behind such activities than about how to accomplish the task \parencite{darcy_ethics_2012}.
+      Corpora from Twitter, for instance, have reached sizes such as 62 million tweets \parencite[p.~519]{hong_language_2011} or 114 million tweets \parencite[p.~13]{eisenstein_phonological_2013} or even 924 million tweets \parencite[p.~244]{huang_understanding_2016}, each tweet containing up to 140 characters\footnote{
+        The character limit for tweets was subsequently raised to 280 characters \parencite{rosen_tweeting_nodate}.
+      }. Depending on the scope of the sort of data the researcher wishes to collect, such corpora can be constructed in relatively little time, as well, with even the largest example given taking only a year to finish.
+
+      The extent to which such large corpora present opportunities for linguistic research is limited by the tools available to deal with so much data.
+      NLP provides a number of tools that help expedite the sort of analyses that variationists might carry out, including part of speech tagging, sentence parsing, and document classification.
+        % Part-of-speech tagging is a tool that is now widely available
           % This typically involves training a tagger on some documents that were hand-coded for part-of-speech
           % Luckily, there are numerous corpora that are already hand-coded that can be used at least for major languages, such as the Brown corpus for English (Kuc̆era & Francis 1967)
         % Related to part-of-speech tagging is the task of parsing sentences
