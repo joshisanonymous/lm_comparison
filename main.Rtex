@@ -126,29 +126,51 @@
 
       In addition to digitized written language, data mining techniques have made collecting large contemporary corpora from social media platforms so prevalent that there is more of a question about the ethics behind such activities than about how to accomplish the task \parencite{darcy_ethics_2012}.
       Corpora from Twitter, for instance, have reached sizes such as 62 million tweets \parencite[p.~519]{hong_language_2011} or 114 million tweets \parencite[p.~13]{eisenstein_phonological_2013} or even 924 million tweets \parencite[p.~244]{huang_understanding_2016}, each tweet containing up to 140 characters\footnote{
-        The character limit for tweets was subsequently raised to 280 characters \parencite{rosen_tweeting_nodate}.
+        The character limit for tweets was subsequently raised to 280 characters \parencite{rosen_tweeting_2017}.
       }. Depending on the scope of the sort of data the researcher wishes to collect, such corpora can be constructed in relatively little time, as well, with even the largest example given taking only a year to finish.
-
-      The extent to which such large corpora present opportunities for linguistic research is limited by the tools available to deal with so much data.
+      Of course, the extent to which such large corpora present opportunities for linguistic research is limited by the tools available to deal with so much data.
       NLP provides a number of tools that help expedite the sort of analyses that variationists might carry out, including part of speech tagging, sentence parsing, and document classification.
-        % Part-of-speech tagging is a tool that is now widely available
-          % This typically involves training a tagger on some documents that were hand-coded for part-of-speech
-          % Luckily, there are numerous corpora that are already hand-coded that can be used at least for major languages, such as the Brown corpus for English (Kuc̆era & Francis 1967)
-        % Related to part-of-speech tagging is the task of parsing sentences
-          % This is done in much the same way as part-of-speech tagging where some training data is used to train a parser that can then automatically parse new sentences
-          % Again, luckily, there are already many corpora that have already been parsed by hand, referred to as treebanks, such as the Penn Treebank for English (Prasad et al. 2019)
-          % These tools are useful for variationists looking at syntax but also potentially any other variationist whose linguistic variables may be syntactically conditioned
-        % Classifiers are trained to accomplish a number of tasks that are useful for coding documents
-          % "Documents" are understood in this case to be any amount of text that acts like a unit, be it a tweet or a book
-          % A classic example of a classifier task is identifying the topic of a document
-            % The goal is often solving problems such as spotting email spam (Dada et al. 2019), news topic classification, opinion mining, and so on (Minaee et al. 2021)
-          % One classification task that is relevant here: language variety identification
-            % The goal is to identify the variety used in a document when those varieties are relatively similar
-            % This has been worked on for Arabic varieties (Bouamor et al. 2019), Balkan languages, Indonesian vs Malaysian, Portuguese varieties, Spanish varieties, French varieties, and Persian vs Dari (Zampieri et al. 2017)
-        % These tools help variationists relegate much work that used to be done by hand to a machine
-          % Admittedly, it is still prudent to go through samples of the data for quality assurance, but doing so is much quicker than coding by hand
-          % Perhaps the biggest yet simplest advancement, particularly when considering how many variables can be analyzed at once, has just been counting
-            % A few lines of basic code can return counts for tokens of linguistic variables from millions to even billions of words of text
+
+      Corpora have been tagged for parts-of-speech (POS) since at least the development of the Brown corpus, which was done by hand.
+      A common NLP task then is to perform POS tagging automatically on new corpora.
+      This typiocally involves training a tagger on documents that were first hand-coded for POS, such as the aforementioned Brown corpus.
+      The general idea behind training is to construct a dictionary made up of each word that has been seen in the hand-coded corpus with its most likely POS tag.
+      This can be as simple as associating the most frequent POS tag for each word to that word but can also get much more complex, perhaps by taking into account the POS of the surrounding words, as well.
+      For example, training might lead to listing \lexi{run} as most likely a verb, but if taking into account context, it might also list \lexi{run} preceded by a determiner as a noun.
+      There are many possibilities and approaches, but the key point is that hand-coded data is always used as input for the training algorithm.
+
+      Related to POS tagging is the task of parsing sentences, which is also a classic task in NLP.
+      This is done in much the same way as POS tagging where some training data is used to train a parser that can then automatically parse new sentences, though naturally the training data must be annotated for no just POS tags but also syntactic structures.
+      Fortunately, like the hand-coded POS tags in the Brown corpus, there are today a number of corpora hand-coded with syntactic structures.
+      These are referred to as treebanks, perhaps the most well-known example being the Penn Treebank for English \parencite{prasad_penn_2019}.
+      Both automatic sentences parsers and POS taggers are useful for variationists looking at syntax but also potentially any other variationist whose linguistic variables may be syntactically conditioned.
+      For instance, one may want a POS tagger if one is studying the (ing) variable and suspects it to varying according to lexical category \parencite{houston_continuity_1985}.
+
+      A common NLP task that is particularly relevant to the current study is that of document classification, where a ``document'' is understood as any amount of text that acts as a unit, be it a tweet or a book.
+      A classic example of this task is that of identifying the topic of a document.
+      The goal in these cases might be to spot spam in e-mail \parencite{dada_machine_2019}, to classify news articles, to mine opinions in text, and so on \parencite{minaee_deep_2021}.
+      The general approach to this problem is to take a collection of documents that have already been classified by hand and once again use them as input for a training algorithm in order to train a classifier that can be used on new documents.
+      The training algorithm may draw conclusions from the input data such as the use of the word ``senator'' over a certain number of times increases the likelihood that a new article is about politics.
+      The result is not entirely different from the dictionaries generated by POS tagging.
+
+      The classification task related to the current study is that of language variety identification, which as it sounds, refers to classifying the language variety in which a document is written.
+      There is a related task called language identification, but the former involves varieties that are quite similar and the latter varieties that are quite different.
+      Language variety identification is not as old of a task in NLP as some of the others, but work has been done on Arabic varieties during the MADAR workshop \parencite{bouamor_madar_2019}, and Balkan languages, Indonesian versus Malaysian, Portuguese varieties, Spanish varieties, French varieties, and Persian versus Dari during the VarDial workshop \parencite{zampieri_findings_2017}.
+      A particularly effective approach to the tasks involved in the VarDial workshop made use of $n$-gram language models \parencite{duvenhage_short_2019}.
+      An $n$-gram language model is generated from training documents in that the training algorithm makes a list of all the $n$-grams found in the training documents along with their frequencies.
+      An $n$-gram itself is some $n$ number of consecutive symbols, which are typically consecutive characters or consecutive words.
+      For instance, in sentence \ref{sent:ngram_example} below, the word bigrams are \orth{this is}, \orth{is a}, and \orth{a sentence}, whereas the character 4-grams are \orth{this}, \orth{his }, \orth{is i}, \orth{s is}, \orth{ is }, and so on.
+      An $n$-gram language model then would be a list of all the $n$-grams of whichever type the researcher decides to use from all the documents that are known to be in a particular language variety.
+      The classifier would then make a decision on the language variety of new texts based on their relationship to the $n$-gram language models that were constructed.
+      In the case of \textcite{duvenhage_short_2019}, he achieved very good results by using a combination of word unigrams and bigrams and character bigrams, 4-grams, and 6-grams which influenced the use of these language model types in the present study, as will be discussed further in section \ref{sec:meths_lms} of the \nameref{sec:meths} section.
+      \begin{enumerate}
+        \item \label{sent:ngram_example} \orth{this is a sentence}
+      \end{enumerate}
+
+      These tools help variationists relegate much work that used to be done by hand to a machine, allowing the scale projects to increase substantially.
+      Admittedly, it is still prudent to go through samples of data that has been automatically coded for quality assurance, but doing so is much quicker than coding by hand.
+      Additionally, perhaps the biggest yet simplest technological advancement that has aided variationists, particularly when considering how many variables can be analyzed at once, has just been counting.
+      A few lines of basic code can return counts for tokens of linguistic variables from millions to even billions of words of text, something that would have taken an enormous amount of time in the early days of the field.
 
     \subsection{The impact of NLP on language variation research}
       \label{sec:intro_nlpimpact}
@@ -176,9 +198,6 @@
         % The symbols typically used are words or characters, but any symbol can be used
           % Given a corpus tagged for part-of-speech, consecutive parts-of-speech may be used, for instance
           % Given a corpus fully transcribed into IPA, consecutive IPA symbols may be used
-        % An example might be a word bigram model
-          % For a sentence such as "this is a sentence", the word bigrams contained would be "this is", "is a", and "a sentence"
-          % Alternatively, a character 4-gram of the same sentence would yield "this, "his ", "is i", "s is", " is ", and so on
       % n-gram language models have been used in classifiers in NLP for the task of language identification and language variety identification, as mentioned above
       % The success of these models in distinguishing between even minorly different language varieties suggests that they can be compared to quantify the linguistic distance between two varieties, as well
         % Language models in NLP are, after all, essentially just probability distributions over some set of symbols
@@ -213,6 +232,8 @@
             % Race/ethnicity tweets will be detected using a classifier trained on 1% of the total tweets collected (~40,000)
             % There is some subjectivity about what exactly constitutes discussion of race/ethnicity
               % Include some examples of tweets that are unarguably about race/ethnicity and some that are not
+      \subsection{Language models}
+        \label{sec:meths_lms}
     % Language models
       % Following Duvenhage (2019) due to his success for DSL 17, both word and character n-grams were trained, unigrams and bigrams for the former, bigrams, 4-grams, and 6-grams for the latter.
         % These models each capture different levels of the language, so I conceptualize them as follows:
