@@ -175,16 +175,23 @@
     \subsection{The impact of NLP on language variation research}
       \label{sec:intro_nlpimpact}
       As computational sociolinguistics has developed in recent years, bringing in NLP technology, studies have begun to analyze many more variables at once to diverse ends.
+      Often these studies mine data from Twitter which presents certain advantages such as broad demographic coverage \parencite[p.~5]{wojcik_sizing_2019}, good API access, and fewer ethical grey areas than other platforms as tweets are public by default, accessible even to those without Twitter accounts themselves, which leads users to being less likely to post confidential information \parencite[p.~46]{ehrlich_microblogging_2010}.
+      However, the methods employed in large-scale analyses such as those described below are not limited to social media data.
+
+      Research examining very many linguistic variables at once is often focused on regional variation, though objectives as been as diverse as looking at language change, style, and gender.
+      \textcite{huang_understanding_2016} studied 211 sets of lexical variables in order to examine regional variation throughout the US as expressed on Twitter.
+      Similarly, though not including quite as many variables, \textcite{grieve_mapping_2018} looked at 54 lexical items on Twitter that they judged to be innovations with the goal of mapping their geographic diffusion over time.
+      With a very different interest, \textcite{pavalanathan_audience-modulated_2015} put \citeauthor{bell_language_1984}'s (\citeyear{bell_language_1984}) audience design framework for style shifting to the test by analyzing 200 lexical variables on Twitter, treating each variable as a binary where the lexical item is either present or absent, which is not a typical approach to linguistic variables in variationist research where the norm is to analyze manifest tokens of variables, though \citeauthor{pavalanathan_audience-modulated_2015}'s approach is not at all atypical for computational sociolinguistics.
+
       
-    % Variationist studies that have looked at large numbers of linguistic variables at once
-      % Somewhat between the a very large number of linguistic variables and the more traditional number of variables is Grieve's work
-        % For example, Grieve et al. (2018) looked at 54 lexical items on Twitter that they judged to be innovations and mapped their geographic diffusion over time
-      % Huang et al. (2016) looked at 211 sets of lexical items to examine regional variation throughout the US as expressed on Twitter
-      % Pavalanathan & Eisenstein (2015) looked at over 200 lexical variables, treating them as binary options of either being present or absent, to examine the influence of audience on language use on Twitter
-      % Bamman et al. (2014) looked at 10,000 lexical items in their analysis of gender on Twitter, though they used these items a bit differently from how they would be used in a traditional variationist study
-        % The lexical items were first used to train a classifier to identify the gender of Twitter users
-        % They then looked at which words were most strongly associated with one gender or the other, which is where the analysis more resembles traditional studies
-        % Their methods are not unlike those that will be proposed here in that they also include a marriage of NLP and sociolinguistics
+
+      % Regional variation, style, and change
+        % Pavalanathan & Eisenstein (2015) looked at over 200 lexical variables, treating them as binary options of either being present or absent, to examine the influence of audience on language use on Twitter
+      % Gender and classifiers
+        % Bamman et al. (2014) looked at 10,000 lexical items in their analysis of gender on Twitter, though they used these items a bit differently from how they would be used in a traditional variationist study
+          % The lexical items were first used to train a classifier to identify the gender of Twitter users
+          % They then looked at which words were most strongly associated with one gender or the other, which is where the analysis more resembles traditional studies
+          % Their methods are not unlike those that will be proposed here in that they also include a marriage of NLP and sociolinguistics
       % In some ways, these studies harken back to the early days of dialectology where the goal was to produce Atlases that demonstrated the boundaries between regional varieties such as the Atlas linguistique de la France for French (Gilliéron & Edmond 1902) or the Sprach-Atlas for German (Wenker 1881/2020)
         % New technologies give modern work the opportunities for insights that were not possible in the past
         % A similar leap in research possibilities based on technological advancement that has been noted is the availability of tape recorders, which made socioilnguistic research based on real speech starting in the 1960s a reality (Milroy & Milroy 1985:52)
