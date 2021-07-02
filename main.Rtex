@@ -174,6 +174,8 @@
 
     \subsection{The impact of NLP on language variation research}
       \label{sec:intro_nlpimpact}
+      As computational sociolinguistics has developed in recent years, bringing in NLP technology, studies have begun to analyze many more variables at once to diverse ends.
+      
     % Variationist studies that have looked at large numbers of linguistic variables at once
       % Somewhat between the a very large number of linguistic variables and the more traditional number of variables is Grieve's work
         % For example, Grieve et al. (2018) looked at 54 lexical items on Twitter that they judged to be innovations and mapped their geographic diffusion over time
