@@ -211,16 +211,35 @@
 
   \section{Methods}
     \label{sec:meths}
-    
+    There are three important factors to consider when using LMs for comparing language varieties: which corpus/corpora to use, which LM type(s) to use, and which metric to use to quantify the distance between the LMs.
+    These three factors will be considered in sections \ref{sec:meths_data}, \ref{sec:meths_lms}, and \ref{sec:meths_analysis} below, respectively.
 
-    \subsection{Data collection}
+    \subsection{Data}
       \label{sec:meths_data}
-    % Data collection
-      % The europarl corpus
-        % This is a parallel corpus that can be used to set the baseline for what one should expect between what are generally viewed as completely different languages and between one variety at different times
-          % For different languages: built models from the English and French documents
-          % For one variety: built models from the first and second halves of the English documents
-          % In effect, this data can be said to be coded for language and text section
+      The primary interest of this study is to develop baseline results for the method, meaning that the method will be applied to language varieties that are \lexi{a priori} distinct enough that they are socially considered different languages as well as language varieties that are \lexi{a priori} identical for all intents and purposes.
+      A natural choice for a corpus given this interest is the Europarl corpus \parencite{koehn_europarl:_2009}.
+
+      The Europarl corpus is a parallel corpus that includes speech from proceedings of the European Union dating back to 1996.
+      A parallel corpus aligns text in one language with its translation in one or more other languages.
+      In the case of the Europarl corpus, speakers are recorded in their own language and then translated into the other official languages of the European Union, which at the outset of the recording of these proceedings meant ten other languages.
+
+      % Who does the translating at the EU?
+
+      The portions of the corpus used to construct LMs for \lexi{a priori} different languages were relatively simple to choose, but the portions used for identical varieties requires a couple assumptions.
+      For different languages, the portions of the corpus considered to be English were compared to the portions considered to be French, meaning LMs for the English texts were compared to LMs for French texts.
+      These two languages were chosen primarily because I am very comfortable speaking both myself, allowing for investigation of any anomalies if they may arise that would not be possible for languages that I do not know.
+      The decision was not related to how different English and French are from each other compared to any other language pairs.
+      Naturally, these languages have a relationship and will thus have some similarities in their models, such as the presence of interlingual homographs such as English \orth{coin} 'coin' and French \orth{coin} 'corner', but that which is important is that they are distinct enough overall that quantifying their distance would show very great distance.
+      The greatest possible distance in the case of written language comparisons would be between languages that use different scripts entirely, but a baseline need not show the maximum and minimum distances but rather very large and very small distances that help situate comparisons between similar but different language varieties.
+
+      The portions of the corpus used to construct LMs for the \lexi{a priori} identical varieties came from English and French again.
+      However, in this case, the English texts were split in half with LMs constructed for the first half to be compared to LMs constructed for the second half.
+      The same was done for the French texts.
+      The idea is that the first half of the texts for any given language should yield LMs that are fairly identical to those of the second half of texts from the same language.
+      There are of course different speakers represented in the corpus, and it is quite possible that those who spoke early in the corpus are not the same as those who spoke later and that these two groups of speakers use different language varieties.
+      This is assumed to not be a great issue due to the corpus representing formal proceedings.
+      All speakers are national representatives of their respective countries communicating in an exceptionally formal forum and so are assumed to converge on the same language norms in these texts.
+
       % [Twitter data will be left out for the QP1 version] Twitter data
         % Characteristics of Twitter
           % What makes this appropriate for this study
@@ -240,6 +259,7 @@
             % Race/ethnicity tweets will be detected using a classifier trained on 1% of the total tweets collected (~40,000)
             % There is some subjectivity about what exactly constitutes discussion of race/ethnicity
               % Include some examples of tweets that are unarguably about race/ethnicity and some that are not
+
       \subsection{Language models}
         \label{sec:meths_lms}
     % Language models
