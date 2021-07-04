@@ -156,13 +156,13 @@
       The classification task related to the current study is that of language variety identification, which as it sounds, refers to classifying the language variety in which a document is written.
       There is a related task called language identification, but the former involves varieties that are quite similar and the latter varieties that are quite different.
       Language variety identification is not as old of a task in NLP as some of the others, but work has been done on Arabic varieties during the MADAR workshop \parencite{bouamor_madar_2019}, and Balkan languages, Indonesian versus Malaysian, Portuguese varieties, Spanish varieties, French varieties, and Persian versus Dari during the VarDial workshop \parencite{zampieri_findings_2017}.
-      A particularly effective approach to the tasks involved in the VarDial workshop made use of $n$-gram language models \parencite{duvenhage_short_2019}.
-      An $n$-gram language model is generated from training documents in that the training algorithm makes a list of all the $n$-grams found in the training documents along with their frequencies.
+      A particularly effective approach to the tasks involved in the VarDial workshop made use of $n$-gram language models (LMs) \parencite{duvenhage_short_2019}.
+      An $n$-gram LM is generated from training documents in that the training algorithm makes a list of all the $n$-grams found in the training documents along with their frequencies.
       An $n$-gram itself is some $n$ number of consecutive symbols, which are typically consecutive characters or consecutive words.
       For instance, in sentence \ref{sent:ngram_example} below, the word bigrams are \orth{this is}, \orth{is a}, and \orth{a sentence}, whereas the character 4-grams are \orth{this}, \orth{his }, \orth{is i}, \orth{s is}, \orth{ is }, and so on.
-      An $n$-gram language model then would be a list of all the $n$-grams of whichever type the researcher decides to use from all the documents that are known to be in a particular language variety.
-      The classifier would then make a decision on the language variety of new texts based on their relationship to the $n$-gram language models that were constructed.
-      In the case of \textcite{duvenhage_short_2019}, he achieved very good results by using a combination of word unigrams and bigrams and character bigrams, 4-grams, and 6-grams which influenced the use of these language model types in the present study, as will be discussed further in section \ref{sec:meths_lms} of the \nameref{sec:meths} section.
+      An $n$-gram LM then would be a list of all the $n$-grams of whichever type the researcher decides to use from all the documents that are known to be in a particular language variety.
+      The classifier would then make a decision on the language variety of new texts based on their relationship to the $n$-gram LMs that were constructed.
+      In the case of \textcite{duvenhage_short_2019}, he achieved very good results by using a combination of word unigrams and bigrams and character bigrams, 4-grams, and 6-grams which influenced the use of these LM types in the present study, as will be discussed further in section \ref{sec:meths_lms} of the \nameref{sec:meths} section.
       \begin{enumerate}
         \item \label{sent:ngram_example} \orth{this is a sentence}
       \end{enumerate}
@@ -174,7 +174,7 @@
 
     \subsection{The impact of NLP on language variation research}
       \label{sec:intro_nlpimpact}
-      As computational sociolinguistics has developed in recent years, bringing in NLP technology, studies have begun to analyze many more variables at once to diverse ends.
+      As computational sociolinguistics has developed in recent years, bringing NLP technology into language variation research, studies have begun to analyze many more variables at once to diverse ends.
       Often these studies mine data from Twitter which presents certain advantages such as broad demographic coverage \parencite[p.~5]{wojcik_sizing_2019}, good API access, and fewer ethical grey areas than other platforms as tweets are public by default, accessible even to those without Twitter accounts themselves, which leads users to being less likely to post confidential information \parencite[p.~46]{ehrlich_microblogging_2010}.
       However, the methods employed in large-scale analyses such as those described below are not limited to social media data.
 
@@ -183,39 +183,38 @@
       Similarly, though not including quite as many variables, \textcite{grieve_mapping_2018} looked at 54 lexical items on Twitter that they judged to be innovations with the goal of mapping their geographic diffusion over time.
       With a very different interest, \textcite{pavalanathan_audience-modulated_2015} put \citeauthor{bell_language_1984}'s (\citeyear{bell_language_1984}) audience design framework for style shifting to the test by analyzing 200 lexical variables on Twitter, treating each variable as a binary where the lexical item is either present or absent, which is not a typical approach to linguistic variables in variationist research where the norm is to analyze manifest tokens of variables, though \citeauthor{pavalanathan_audience-modulated_2015}'s approach is not at all atypical for computational sociolinguistics.
 
-      
+      The impact of gender on variation has also been analyzed on Twitter.
+      \textcite{bamman_gender_2014} employed 10,000 lexical items to do so.
+      One of their goals was to see which lexical items were associated with specific genders, though they also used these items to train a classifier to identify the gender of Twitter users in the first place as this information is not part of users' profiles nor is it always clear how users identify from cursory glances.
+      Their approach of training a classifier involved generating a LM, which is at the heart of the method proposed in the present study to compare language varieties holistically.
 
-      % Regional variation, style, and change
-        % Pavalanathan & Eisenstein (2015) looked at over 200 lexical variables, treating them as binary options of either being present or absent, to examine the influence of audience on language use on Twitter
-      % Gender and classifiers
-        % Bamman et al. (2014) looked at 10,000 lexical items in their analysis of gender on Twitter, though they used these items a bit differently from how they would be used in a traditional variationist study
-          % The lexical items were first used to train a classifier to identify the gender of Twitter users
-          % They then looked at which words were most strongly associated with one gender or the other, which is where the analysis more resembles traditional studies
-          % Their methods are not unlike those that will be proposed here in that they also include a marriage of NLP and sociolinguistics
-      % In some ways, these studies harken back to the early days of dialectology where the goal was to produce Atlases that demonstrated the boundaries between regional varieties such as the Atlas linguistique de la France for French (Gilliéron & Edmond 1902) or the Sprach-Atlas for German (Wenker 1881/2020)
-        % New technologies give modern work the opportunities for insights that were not possible in the past
-        % A similar leap in research possibilities based on technological advancement that has been noted is the availability of tape recorders, which made socioilnguistic research based on real speech starting in the 1960s a reality (Milroy & Milroy 1985:52)
+      In some ways, these studies harken back to the early days of dialectology where the goal was to produce atlases that demonstrated the boundaries between regional varieties such as the Atlas linguistique de la France for French \parencite{gillieron_atlas_1902} or the Sprach-Atlas for German \parencite{wenker_sprach-atlas_2020}.
+      Technologies that are ever-present today but unimaginable in the 19th and early 20th centuries allow new insights to be gained from studies with similar objectives to those early ones that relied on questionnaires alone.
+      Indeed, technological advances have always served as catalysts for paradigm changes in methods in science in general but even in sociolinguistics.
+      As \textcite{milroy_authority_2012} once remarked, the development and availability of tape recorders is what made sociolinguistic research based on real speech a reality starting in the 1960s (p.~52).
 
     \subsection{Generalizing from $n$-gram language models}
       \label{sec:intro_lmproposal}
-    % These NLP-advantaged studies are fairly holistic, but are they holistic enough?
-      % A lot of these studies are really only looking at lexical variation even though they include many variables
-      % A more holistic approach would include more than individual lexical items, even if very many individual lexical items are considered
-      % How are other linguistic levels captured?
-    % An even more holistic approach is to use character n-gram and word n-gram language models
-      % n-gram language models take every unique n number of consecutive symbols in a corpus and counts up how often they occur
-        % The symbols typically used are words or characters, but any symbol can be used
-          % Given a corpus tagged for part-of-speech, consecutive parts-of-speech may be used, for instance
-          % Given a corpus fully transcribed into IPA, consecutive IPA symbols may be used
-      % n-gram language models have been used in classifiers in NLP for the task of language identification and language variety identification, as mentioned above
-      % The success of these models in distinguishing between even minorly different language varieties suggests that they can be compared to quantify the linguistic distance between two varieties, as well
-        % Language models in NLP are, after all, essentially just probability distributions over some set of symbols
-    % Research question
-      % Are n-gram language models useful for quantifying the linguistic distance between varieties in a more holistic way than has been previously possible?
+      The aforementioned studies and took advantage of advances in NLP to analyze many more variables at once than was ever done or even possible before, making them much more holistic examinations of varieties than studies based in traditional methods.
+      However, it is possible to go further.
+      Importantly, all of these large-scale studies have looked at lexical variation alone despite the large number of linguistic variables used, leaving out the other linguistic levels.
+      In the case of variation in written language, a truly holistic analysis would aim to capture morphological, syntactic, and even orthographic variation in addition to lexical variation.
+
+      An approach that would allow for comparing language varieties on all linguistic levels would involve using character $n$-gram and word $n$-gram LMs.
+      $n$-gram LMs have been used successfully in NLP for the task of language identification and language variety identification, as discussed in section \ref{sec:intro_nlp}.
+      Achieving high accuracy in distinguishing betweening two closely related language varieties suggests that similar methods can be used to quantify the distance between two already-identified varieties, as well.
+      As LMs are simply probability distributions over some set of symbols, existing statistical metrics meant to quantify the distance between two distributions can be used.
+      My research question is thus the following:
+      \begin{itemize}
+        \item[RQ:] \label{research_question} Are $n$-gram LMs useful for quantifying the linguistic distance between varieties in a more holistic way than was previously possible?
+      \end{itemize}
 
   \section{Methods}
     \label{sec:meths}
-  % Methods
+    
+
+    \subsection{Data collection}
+      \label{sec:meths_data}
     % Data collection
       % The europarl corpus
         % This is a parallel corpus that can be used to set the baseline for what one should expect between what are generally viewed as completely different languages and between one variety at different times
@@ -249,6 +248,8 @@
           % Word unigrams: lexicon
           % Word bigrams: syntax (or at least some small amount of syntax)
           % Character n-grams: orthography and morphology
+      \subsection{Analysis}
+        \label{sec:meths_analysis}
     % Analysis
       % Two statistics are used: KL divergence and cosine similarity
         % Both of these show essentially the same thing (i.e., how similar/different two distributions are), but the former is easier to interpret and the latter makes comparisons between language pairs easier as values are always between -1 and 1
