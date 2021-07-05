@@ -260,17 +260,47 @@
             % There is some subjectivity about what exactly constitutes discussion of race/ethnicity
               % Include some examples of tweets that are unarguably about race/ethnicity and some that are not
 
-      \subsection{Language models}
-        \label{sec:meths_lms}
-    % Language models
-      % Following Duvenhage (2019) due to his success for DSL 17, both word and character n-grams were trained, unigrams and bigrams for the former, bigrams, 4-grams, and 6-grams for the latter.
-        % These models each capture different levels of the language, so I conceptualize them as follows:
-          % Word unigrams: lexicon
-          % Word bigrams: syntax (or at least some small amount of syntax)
-          % Character n-grams: orthography and morphology
-      \subsection{Analysis}
-        \label{sec:meths_analysis}
-    % Analysis
+    \subsection{Language models}
+      \label{sec:meths_lms}
+      For each portion of the Europarl corpus that was chosen for comparison to another corpus, an LM or LMs were required.
+      I followed \textcite{duvenhage_short_2019} due to his success with applying his language identification system to the Discriminating between Similar Languages (DSL) portion of the 2017 VarDial workshop.
+      \citeauthor{duvenhage_short_2019} achieved an overall accuracy of 98.70\% when classifying texts as being written in language varieties that are similar, whereas the winner of the DSL task achieved an accuracy of 92.74\% (p.~4).
+      Part of what led to such high accuracy was training a combination of $n$-gram LMs that included word unigram, word bigram, character bigram, character 4-gram, and character 6-gram LMs.
+      As such, the same LM types were used in the present study under the assumption that good sensitivity in language variety discrimination would translate into more accurate measures of distance between language varieties when comparing them.
+
+      These five LMs arguably capture four linguistic levels.
+      Perhaps the least obvious linguistic level captured is syntax by way of the word bigram LM.
+      For instance, one can imagine the following word bigrams making up part of an English LM:
+      \begin{itemize}
+        \item \orth{the record}
+        \item \orth{the law}
+        \item \orth{the consequence}
+        \item \orth{the state}
+      \end{itemize}
+      While the LM would not include information about the lexical category for each word, it is still codifying the idea that a word like \lexi{the} is likely followed by a word that happens to be a noun or in other words NP $\to$ Det N.
+      What is missed in such an LM, however, is dependencies that are even moderately long distance.
+      If sentence \ref{sent:dependency} below was found in the training corpus, a word bigram LM would have no way of codifying the idea that the presence of \orth{Tony and Kim} necessitate the use of \orth{their} as opposed to possibilities such as \orth{his} or \orth{its}.
+      While it would be beneficial to have the LM deal with such long distance dependencies, it cannot be done with large word $n$-grams -- an 8-gram in this case -- because such LMs yield very many types with one token each.
+      \begin{enumerate}[resume]
+        \item \label{sent:dependency} \orth{Tony and Kim developed a plan for their stock exchanges.}
+      \end{enumerate}
+
+      The other captured linguistic levels are perhaps more obvious.
+      The word unigram LM captures the lexicon of the variety, and all of the character $n$-grams capture both the morphology and the orthography of the variety.
+      For instance, a character 4-gram that may occur many times in an English corpus but not a French corpus is \orth{ing }.
+      The LM does not annotate this as a morpheme, but it does effectivey codify that the three characters \orth{ing} often come before a space and at the end of a word, suggesting a suffix.
+      Likewise, a character bigram such as \orth{té} occurring many times in a French corpus is codifying the idea that acute accents occur in the orthography of this French variety, whereas the same character bigram would likely never be found in an English corpus.
+
+      One limitation that should be noted about capturing a variety's morphology in a LM is that drawing comparisons between the morphological systems of two different varieties afterward is dependent on how the sound system is being represented in writing.
+      An extreme example would be comparing a character $n$-gram LM constructed from an English corpus with one constructed from a Mandarin corpus where it would be literally impossible to find that both varieties used a particular morpheme as the writing systems are in no way related.
+      However, this is as it should be as it is also very unlikely that a particular morpheme is used in both English and Mandarin.
+      A less extreme and more probable example would be in comparing closely related language varieties that may be written in different scripts regardless, such as Romanian possibly being written in Latin script in some communities and Cyrillic in others.
+      A particular morpheme may indeed be exactly the same between two such varieties but the representations are completely different.
+      For spoken language (i.e., in the sense of written transcripts of speech), a solution may be to use IPA transcriptions when constructing character $n$-gram LMs, but for written language, IPA transcriptions may not be appropriate.
+      This limitation is not at issue with the current analysis, though, as both English and French use Latin script.
+
+    \subsection{Analysis}
+      \label{sec:meths_analysis}
       % Two statistics are used: KL divergence and cosine similarity
         % Both of these show essentially the same thing (i.e., how similar/different two distributions are), but the former is easier to interpret and the latter makes comparisons between language pairs easier as values are always between -1 and 1
         % These are calculated for like-models (e.g., word unigram to word unigram, character 4-gram to character 4-gram, etc.)
