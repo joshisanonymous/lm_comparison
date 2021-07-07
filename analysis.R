@@ -5,6 +5,7 @@
 # Joshua McNeill - joshua dot mcneill at uga dot edu                  #
 #######################################################################
 
+## ----load_packages_functions_data ----
 # Packages
 library(philentropy)
 
