@@ -37,6 +37,17 @@ euroEnOut2ndWordBi = "./data/LMs/euroEn2ndWordBi.csv"
 euroEnOut2ndCharBi = "./data/LMs/euroEn2ndCharBi.csv"
 euroEnOut2ndCharFour = "./data/LMs/euroEn2ndCharFour.csv"
 euroEnOut2ndCharSix = "./data/LMs/euroEn2ndCharSix.csv"
+# French halves
+euroFrOut1stWordUni = "./data/LMs/euroFr1stWordUni.csv"
+euroFrOut1stWordBi = "./data/LMs/euroFr1stWordBi.csv"
+euroFrOut1stCharBi = "./data/LMs/euroFr1stCharBi.csv"
+euroFrOut1stCharFour = "./data/LMs/euroFr1stCharFour.csv"
+euroFrOut1stCharSix = "./data/LMs/euroFr1stCharSix.csv"
+euroFrOut2ndWordUni = "./data/LMs/euroFr2ndWordUni.csv"
+euroFrOut2ndWordBi = "./data/LMs/euroFr2ndWordBi.csv"
+euroFrOut2ndCharBi = "./data/LMs/euroFr2ndCharBi.csv"
+euroFrOut2ndCharFour = "./data/LMs/euroFr2ndCharFour.csv"
+euroFrOut2ndCharSix = "./data/LMs/euroFr2ndCharSix.csv"
 
 
 def getFreqDist(input, output, type, n, split=False, half=None):
@@ -103,3 +114,17 @@ getFreqDist(euroEnIn, euroEnOut2ndWordBi, "word", 2, True, 2)
 getFreqDist(euroEnIn, euroEnOut2ndCharBi, "character", 2, True, 2)
 getFreqDist(euroEnIn, euroEnOut2ndCharFour, "character", 4, True, 2)
 getFreqDist(euroEnIn, euroEnOut2ndCharSix, "character", 6, True, 2)
+
+## Build language models from the two halves of the French documents
+# First half
+getFreqDist(euroFrIn, euroFrOut1stWordUni, "word", 1, True, 1)
+getFreqDist(euroFrIn, euroFrOut1stWordBi, "word", 2, True, 1)
+getFreqDist(euroFrIn, euroFrOut1stCharBi, "character", 2, True, 1)
+getFreqDist(euroFrIn, euroFrOut1stCharFour, "character", 4, True, 1)
+getFreqDist(euroFrIn, euroFrOut1stCharSix, "character", 6, True, 1)
+# Second half
+getFreqDist(euroFrIn, euroFrOut2ndWordUni, "word", 1, True, 2)
+getFreqDist(euroFrIn, euroFrOut2ndWordBi, "word", 2, True, 2)
+getFreqDist(euroFrIn, euroFrOut2ndCharBi, "character", 2, True, 2)
+getFreqDist(euroFrIn, euroFrOut2ndCharFour, "character", 4, True, 2)
+getFreqDist(euroFrIn, euroFrOut2ndCharSix, "character", 6, True, 2)

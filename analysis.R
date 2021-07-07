@@ -42,8 +42,8 @@ calculateCosSim <- function(alignedLMsDf) {
 }
 
 ## Merge LMs
-# Those that should be the "same" language variety
-same <- list(
+# Those that should be the "same" English language variety
+sameEn <- list(
   wordUni = mergeLMs(euroEn1stWordUni, euroEn2ndWordUni),
   wordBi = mergeLMs(euroEn1stWordBi, euroEn2ndWordBi),
   charBi = mergeLMs(euroEn1stCharBi, euroEn2ndCharBi),
@@ -51,7 +51,18 @@ same <- list(
   charSix = mergeLMs(euroEn1stCharSix, euroEn2ndCharSix)
 )
 # Make colnames the same
-same <- lapply(same, setNames, (c("ngram", "x", "y")))
+sameEn <- lapply(sameEn, setNames, (c("ngram", "x", "y")))
+
+# Those that should be the "same" French language variety
+sameFr <- list(
+  wordUni = mergeLMs(euroFr1stWordUni, euroFr2ndWordUni),
+  wordBi = mergeLMs(euroFr1stWordBi, euroFr2ndWordBi),
+  charBi = mergeLMs(euroFr1stCharBi, euroFr2ndCharBi),
+  charFour = mergeLMs(euroFr1stCharFour, euroFr2ndCharFour),
+  charSix = mergeLMs(euroFr1stCharSix, euroFr2ndCharSix)
+)
+# Make colnames the same
+sameFr <- lapply(sameFr, setNames, (c("ngram", "x", "y")))
 
 # Those that should be different language varieties
 different <- list(
@@ -64,18 +75,23 @@ different <- list(
 different <- lapply(different, setNames, (c("ngram", "x", "y")))
 
 # Combine LMs into large multidimensional LMs good for calculateCosSim
-allSame <- do.call("rbind", same)
+allSameEn <- do.call("rbind", sameEn)
+allSameFr <- do.call("rbind", sameFr)
 allDiff <- do.call("rbind", different)
 
 ## Calculate stats
 # Get KL divergences
-sapply(same, calculateKL)
+sapply(sameEn, calculateKL)
+sapply(sameFr, calculateKL)
 sapply(different, calculateKL)
-calculateKL(allSame)
+calculateKL(allSameEn)
+calculateKL(allSameFr)
 calculateKL(allDiff)
 
 # Get cosine similarities
-sapply(same, calculateCosSim)
+sapply(sameEn, calculateCosSim)
+sapply(sameFr, calculateCosSim)
 sapply(different, calculateCosSim)
-calculateCosSim(allSame)
+calculateCosSim(allSameEn)
+calculateCosSim(allSameFr)
 calculateCosSim(allDiff)
