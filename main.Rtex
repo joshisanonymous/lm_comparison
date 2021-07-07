@@ -12,6 +12,8 @@
     \hypersetup{colorlinks=true, allcolors=blue}
   \usepackage[group-minimum-digits=4, group-separator={,}]{siunitx}
   \usepackage{enumitem}
+  \usepackage{tabularx}
+    \newcolumntype{Y}{>{\raggedleft\arraybackslash}X}
 
   % Document information
   \title{Using language models for holistic language variety comparisons\footnote{
@@ -301,10 +303,41 @@
 
     \subsection{Analysis}
       \label{sec:meths_analysis}
-      % Two statistics are used: KL divergence and cosine similarity
-        % Both of these show essentially the same thing (i.e., how similar/different two distributions are), but the former is easier to interpret and the latter makes comparisons between language pairs easier as values are always between -1 and 1
-        % These are calculated for like-models (e.g., word unigram to word unigram, character 4-gram to character 4-gram, etc.)
-          % This makes it possible to see how distant two varieties are on different linguistic levels
+      As has been mentioned already, an $n$-gram LM is effectively a distribution over some set of symbols.
+      Table \ref{tab:ex_lms} shows what this might look like for two different word unigram LMs, though it only presents a very small sample.
+      The entirety of each LM would include considerably more $n$-grams.
+      Indeed, % Insert nrow() from one of the unigram models to show just how large
+      The difference between distributions such as these or their similarities can be quantified, which for the purposes here would represent the distance between two varieties.
+      Two metrics were used in this study: KL divergence and cosine similarity.
+
+      \begin{table}[tbhp]
+        \caption{Hypothetical example of the frequencies of a small portion of two different LMs}
+        \label{tab:ex_lms}
+        \begin{tabularx}{\textwidth}{l | Y Y Y Y Y Y Y }
+          \multicolumn{8}{c}{}                                       \\
+          Unigram   & a  & about & is & laws & phrase & words & this \\
+          \hline
+          English 1 & 41 & 7     & 28 & --   & 2      & 1     & 12   \\
+          English 2 & 49 & 10    & 25 & 2    & 1      & --    & 17   \\
+        \end{tabularx}
+      \end{table}
+
+      KL divergence specifically quantifies the difference between two probability distributions.
+      As such, the frequencies in LMs such as those in Table \ref{tab:ex_lms} must be converted into probabilities.
+      As LMs are typically trained on very large corpora, the empirical probability is an appropriate estimate of the true probability for each $n$-gram. % Add the sum() of some unigram LM here as a case in point
+      The relative frequency of each $n$-gram was thus used in this study.
+      The resulting values yielded by KL divergence range from zero and up where zero represents no difference and large values can be understood to represent great differences.\footnote{
+        Technically, KL divergence is how much information is lost when one probability distribution is used as an estimate for another.
+      } This range makes KL divergence fairly easy to interpret, though it perhaps makes comparing differences between different pairs of language varieties difficult as one is comparing values that could range from zero to infinity.
+
+      Cosine similarity, on the other hand, yields values ranging from -1 to 1, making it simpler to compare the cosine similarities obtained from comparing different pairs of language varieties.
+      In this case, a value of 1 means the distributions are identical, and a value of -1 means the distributions are not similar in any way.
+      However, interpreting these values on their own is not as straight forward as with KL divergence.
+      Technically, each distribution is being treated as a very high dimensional vector space, which is not easily conceptualized.
+
+      Both KL divergence and cosine similarity were calculated for pairs of like $n$-gram LMs.
+      For instance, character 4-gram LMs were only compared to other character 4-gram LMs and never to other LMs.
+      Doing so would have amounted to comparing different linguistic levels between varieties and would have likely yielded very high differences even between similar varieties.
 
   \section{Results}
     \label{sec:results}
