@@ -9,10 +9,12 @@
 # Packages
 library(philentropy)
 library(ggplot2)
+library(tidyr)
 
 # Variables
 dataDir <- "./data/LMs/"
 files <- list.files(dataDir)
+colorBlindPalette <- c("#999999", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7")
 
 # Load LMs
 for(file in files) {
@@ -22,6 +24,11 @@ for(file in files) {
 # Clean up temp objects
 rm(file, objectName)
 
+###############
+#             #
+#  Functions  #
+#             #
+###############
 ## Functions
 # Merge two LMs into a data frame and remove the source objects
 mergeLMs <- function(LM1, LM2) {
@@ -43,7 +50,12 @@ calculateCosSim <- function(alignedLMsDf) {
   cosine_dist(alignedLMsDf[,2], alignedLMsDf[,3], testNA = FALSE)
 }
 
-## Merge LMs
+###############
+#             #
+#    Merge    #
+#     LMs     #
+#             #
+###############
 # Those that should be the "same" English language variety
 sameEn <- list(
   wordUni = mergeLMs(euroEn1stWordUni, euroEn2ndWordUni),
@@ -81,33 +93,97 @@ allSameEn <- do.call("rbind", sameEn)
 allSameFr <- do.call("rbind", sameFr)
 allDiff <- do.call("rbind", different)
 
-## Calculate stats
+###############
+#             #
+#  Calculate  #
+#    Stats    #
+#             #
+###############
 # Get KL divergences
 KLlinglevs <- data.frame(
-  "sameEn" = sapply(sameEn, calculateKL),
-  "sameFr" = sapply(sameFr, calculateKL),
-  "different" = sapply(different, calculateKL)
+  "LM.Type" = c("Word Unigram", "Word Bigram",
+                "Character Bigram", "Character 4-gram", "Character 6-gram"),
+  "Both.English" = sapply(sameEn, calculateKL),
+  "Both.French" = sapply(sameFr, calculateKL),
+  "English.vs.French" = sapply(different, calculateKL)
 )
+KLlinglevsGraphSafe <- gather(KLlinglevs, key = "Varieties.Compared", value = "KL.Divergence",
+                              Both.English, Both.French, English.vs.French)
+KLlinglevsGraphSafe$LM.Type <- factor(KLlinglevsGraphSafe$LM.Type,
+                                      levels = c("Word Unigram", "Word Bigram",
+                                                 "Character Bigram", "Character 4-gram", "Character 6-gram"))
+
 KLall <- data.frame(
-  "all" = c(
+  "Varieties.Compared" = c("Both English", "Both French", "English vs French"),
+  "KL.Divergence" = c(
     calculateKL(allSameEn),
     calculateKL(allSameFr),
     calculateKL(allDiff)
   ),
-  row.names = c("English", "French", "different")
+  row.names = NULL
 )
 
 # Get cosine similarities
 CosSimlinglevs <- data.frame(
-  "sameEn" = sapply(sameEn, calculateCosSim),
-  "sameFr" = sapply(sameFr, calculateCosSim),
-  "different" = sapply(different, calculateCosSim) 
+  "LM.Type" = c("Word Unigram", "Word Bigram",
+                "Character Bigram", "Character 4-gram", "Character 6-gram"),
+  "Both.English" = sapply(sameEn, calculateCosSim),
+  "Both.French" = sapply(sameFr, calculateCosSim),
+  "English.vs.French" = sapply(different, calculateCosSim) 
 )
+CosSimlinglevsGraphSafe <- gather(CosSimlinglevs, key = "Varieties.Compared", value = "Cosine.Similarity",
+                                  Both.English, Both.French, English.vs.French)
+CosSimlinglevsGraphSafe$LM.Type <- factor(CosSimlinglevsGraphSafe$LM.Type,
+                                          levels = c("Word Unigram", "Word Bigram",
+                                                     "Character Bigram", "Character 4-gram", "Character 6-gram"))
+
 CosSimall <- data.frame(
-  "all" = c(
+  "Varieties.Compared" = c("Both English", "Both French", "English vs French"),
+  "Cosine.Similarity" = c(
     calculateCosSim(allSameEn),
     calculateCosSim(allSameFr),
     calculateCosSim(allDiff)
   ),
-  row.names = c("English", "French", "different")
+  row.names = NULL
 )
+
+################
+#              #
+#    Graphs    #
+#              #
+################
+# Barplot for comparing KL divergence between LMs that combine all linguistic levels
+graphKLall <- ggplot(
+  KLall, aes(x = Varieties.Compared, y = KL.Divergence)) +
+  geom_bar(stat = "identity") +
+  theme_bw() +
+  labs(x = "Varieties Compared",
+       y = "KL Divergence") +
+  geom_text(aes(label = round(KL.Divergence, 3)), vjust = -0.5)
+
+# Barplot for comparing cosine similarity between LMs that combine all linguistic levels
+graphCosSimall <- ggplot(
+  CosSimall, aes(x = Varieties.Compared, y = Cosine.Similarity)) +
+  geom_bar(stat = "identity") +
+  theme_bw() +
+  labs(x = "Varieties Compared",
+       y = "Cosine Similarity") +
+  geom_text(aes(label = round(Cosine.Similarity, 3)), vjust = -0.5)
+
+# Barplot for comparing KL divergence between LMs by linguistic level
+graphKLlinglevs <- ggplot(
+  KLlinglevsGraphSafe, aes(x = LM.Type, y = KL.Divergence, fill = Varieties.Compared)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  theme_bw() +
+  labs(x = "LM Type", y = "KL Divergence", fill = "Varieties Compared") +
+  scale_fill_manual(values = colorBlindPalette,
+                    labels = c("Both English", "Both French", "English vs French"))
+
+# Barplot for comparing KL divergence between LMs by linguistic level
+graphCosSimlinglevs <- ggplot(
+  CosSimlinglevsGraphSafe, aes(x = LM.Type, y = Cosine.Similarity, fill = Varieties.Compared)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  theme_bw() +
+  labs(x = "LM Type", y = "Cosine Similarity", fill = "Varieties Compared") +
+  scale_fill_manual(values = colorBlindPalette,
+                    labels = c("Both English", "Both French", "English vs French"))
