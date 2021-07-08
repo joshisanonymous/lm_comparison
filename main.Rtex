@@ -28,15 +28,17 @@
   \newcommand{\gloss}[1]{`#1'}
 
 \begin{document}
-  % <<settings_load_scripts, echo = FALSE>>=
-  % read_chunk("analysis.R")
-  % opts_chunk$set(echo = FALSE,
-  %                warning = FALSE,
-  %                message = FALSE,
-  %                results = "asis",
-  %                fig.height = 3,
-  %                fig.width = 5)
-  % @
+  <<settings_load_scripts, echo = FALSE>>=
+  read_chunk("analysis.R")
+  opts_chunk$set(echo = FALSE,
+                 warning = FALSE,
+                 message = FALSE,
+                 results = "asis",
+                 fig.height = 3,
+                 fig.width = 5)
+  @
+  <<load_packages_functions_data>>=
+  @
   \maketitle
   \section{Introduction}
     \label{sec:intro}
@@ -306,7 +308,7 @@
       As has been mentioned already, an $n$-gram LM is effectively a distribution over some set of symbols.
       Table \ref{tab:ex_lms} shows what this might look like for two different word unigram LMs, though it only presents a very small sample.
       The entirety of each LM would include considerably more $n$-grams.
-      Indeed, % Insert nrow() from one of the unigram models to show just how large
+      Indeed, the word unigram LM constructed in this study from the entire English corpus contains \num{\Sexpr{nrow(different$wordUni)}} unigrams, where the most frequent, \orth{\Sexpr{different$wordUni[which.max(different$wordUni$x), "ngram"]}}, occurs \num{\Sexpr{format(different$wordUni[which.max(different$wordUni$x), "x"], scientific = FALSE)}} times.
       The difference between distributions such as these or their similarities can be quantified, which for the purposes here would represent the distance between two varieties.
       Two metrics were used in this study: KL divergence and cosine similarity.
 
@@ -324,7 +326,7 @@
 
       KL divergence specifically quantifies the difference between two probability distributions.
       As such, the frequencies in LMs such as those in Table \ref{tab:ex_lms} must be converted into probabilities.
-      As LMs are typically trained on very large corpora, the empirical probability is an appropriate estimate of the true probability for each $n$-gram. % Add the sum() of some unigram LM here as a case in point
+      As LMs are typically trained on very large corpora -- the English portion of the Europarl corpus used here is made up of \num{\Sexpr{format(sum(different$wordUni$y), scientific = FALSE)}} words -- the empirical probability is an appropriate estimate of the true probability for each $n$-gram.
       The relative frequency of each $n$-gram was thus used in this study.
       The resulting values yielded by KL divergence range from zero and up where zero represents no difference and large values can be understood to represent great differences.\footnote{
         Technically, KL divergence is how much information is lost when one probability distribution is used as an estimate for another.
@@ -341,7 +343,8 @@
 
   \section{Results}
     \label{sec:results}
-  % Results
+
+
     % europarl baseline results
       % What are the KL divergence and cosine similarity values when comparing French and English?
         % What about when comparing different model types? (Look at combining all models and looking at models individually)
@@ -351,7 +354,6 @@
 
   \section{Discussion}
     \label{sec:discuss}
-  % Discussion
     % This technique for comparing varieties holistically appears to work, but there are some limitations to consider and questions left unanswered
       % Are the language models used here the right models?
       % How big do corpora need to be in order for this technique to work?
