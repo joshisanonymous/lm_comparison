@@ -8,6 +8,7 @@
 ## ----load_packages_functions_data ----
 # Packages
 library(philentropy)
+library(ggplot2)
 
 # Variables
 dataDir <- "./data/LMs/"
@@ -33,6 +34,7 @@ mergeLMs <- function(LM1, LM2) {
 # Convert to the appropriate format and calculate KL divergence
 calculateKL <- function(alignedLMsDf) {
   matrixed <- rbind(alignedLMsDf[, 2], alignedLMsDf[, 3])
+  matrixed <- matrixed + 1 # Smoothing value
   KL(matrixed, est.prob = "empirical")
 }
 
@@ -81,17 +83,31 @@ allDiff <- do.call("rbind", different)
 
 ## Calculate stats
 # Get KL divergences
-sapply(sameEn, calculateKL)
-sapply(sameFr, calculateKL)
-sapply(different, calculateKL)
-calculateKL(allSameEn)
-calculateKL(allSameFr)
-calculateKL(allDiff)
+KLlinglevs <- data.frame(
+  "sameEn" = sapply(sameEn, calculateKL),
+  "sameFr" = sapply(sameFr, calculateKL),
+  "different" = sapply(different, calculateKL)
+)
+KLall <- data.frame(
+  "all" = c(
+    calculateKL(allSameEn),
+    calculateKL(allSameFr),
+    calculateKL(allDiff)
+  ),
+  row.names = c("English", "French", "different")
+)
 
 # Get cosine similarities
-sapply(sameEn, calculateCosSim)
-sapply(sameFr, calculateCosSim)
-sapply(different, calculateCosSim)
-calculateCosSim(allSameEn)
-calculateCosSim(allSameFr)
-calculateCosSim(allDiff)
+CosSimlinglevs <- data.frame(
+  "sameEn" = sapply(sameEn, calculateCosSim),
+  "sameFr" = sapply(sameFr, calculateCosSim),
+  "different" = sapply(different, calculateCosSim) 
+)
+CosSimall <- data.frame(
+  "all" = c(
+    calculateCosSim(allSameEn),
+    calculateCosSim(allSameFr),
+    calculateCosSim(allDiff)
+  ),
+  row.names = c("English", "French", "different")
+)
