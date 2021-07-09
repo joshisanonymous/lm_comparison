@@ -313,6 +313,7 @@
       Two metrics were used in this study: KL divergence and cosine similarity.
 
       \begin{table}[tbhp]
+        \centering
         \caption{Hypothetical example of the frequencies of a small portion of two different LMs}
         \label{tab:ex_lms}
         \begin{tabularx}{\textwidth}{l | Y Y Y Y Y Y Y }
@@ -337,6 +338,18 @@
       However, interpreting these values on their own is not as straight forward as with KL divergence.
       Technically, each distribution is being treated as a very high dimensional vector space, which is not easily conceptualized.
 
+      Another advantage of cosine similarity is that, unlike KL divergence, counts of zero do not cause any problems.
+      Zero counts are quite frequent in LMs, and particularly frequent when aligning two LMs from very different language varieties.
+      For instance, the word unigram \orth{ai}, the 1st person singular habitual inflection of the verb meaning \gloss{to} in French, is very frequent in an LM trained from a French corpus -- it occurs \num{\Sexpr{different$wordUni[different$wordUni$ngram == "ai", "y"]}} times in the French LM used here -- but naturally is unlikely to ever occur in an LM trained from an English corpus, as is the case here.
+      To calculate KL divergence between distributions that contain zero counts, data smoothing must be used.
+
+      A very simply form of smoothing, and the form used here, is Laplace smoothing, which involves adding an imagined pseudocount of one to every $n$-gram in the distribution.
+      In some cases, the actual counts may be zero simply because the sample corpus was not large enough to obtain any observations of the $n$-gram in question.
+      These are ideal cases for Laplace smoothing.
+      In other cases, such as having a zero count for \orth{ai} in an English LM, Laplace smoothing is more dubious as the count is expected to remain zero no matter how large the corpus sample is.
+      The alternative to Laplace smoothing then would be to remove all $n$-grams with zero counts from both distributions.
+      However, this was not done here as these are exactly the $n$-grams that may distinguish these language varieties from each other the most.
+
       Both KL divergence and cosine similarity were calculated for pairs of like $n$-gram LMs.
       For instance, character 4-gram LMs were only compared to other character 4-gram LMs and never to other LMs.
       Doing so would have amounted to comparing different linguistic levels between varieties and would have likely yielded very high differences even between similar varieties.
@@ -344,6 +357,41 @@
   \section{Results}
     \label{sec:results}
 
+    \begin{figure}[tbhp]
+      \centering
+      \caption{KL divergence values comparing the combination of all LMs, representing all linguistic levels at once, for pairs of language varieties, rounded to the nearest thousandth}
+      \label{fig:graphklall}
+      <<graphKLall>>=
+      graphKLall
+      @
+    \end{figure}
+
+    \begin{figure}[tbhp]
+      \centering
+      \caption{Cosine similarity values comparing the combination of all LMs, representing all linguistic levels at once, for pairs of language varieties, rounded to the nearest thousandth}
+      \label{fig:graphcossimall}
+      <<graphCosSimall>>=
+      graphCosSimall
+      @
+    \end{figure}
+
+    \begin{figure}[tbhp]
+      \centering
+      \caption{KL divergence values comparing individual LM types, each representing one linguistic level, for pairs of language varieties}
+      \label{fig:graphkllinglevs}
+      <<graphKLlinglevs>>=
+      graphKLlinglevs
+      @
+    \end{figure}
+
+    \begin{figure}[tbhp]
+      \centering
+      \caption{Cosine similarity values comparing individual LM types, each representing one linguistic level, for pairs of language varieties}
+      \label{fig:graphcossimlinglevs}
+      <<graphCosSimlinglevs>>=
+      graphCosSimlinglevs
+      @
+    \end{figure}
 
     % europarl baseline results
       % What are the KL divergence and cosine similarity values when comparing French and English?

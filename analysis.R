@@ -156,6 +156,7 @@ CosSimall <- data.frame(
 graphKLall <- ggplot(
   KLall, aes(x = Varieties.Compared, y = KL.Divergence)) +
   geom_bar(stat = "identity") +
+  ylim(0, max(KLall$KL.Divergence) + 0.5) +
   theme_bw() +
   labs(x = "Varieties Compared",
        y = "KL Divergence") +
@@ -165,6 +166,7 @@ graphKLall <- ggplot(
 graphCosSimall <- ggplot(
   CosSimall, aes(x = Varieties.Compared, y = Cosine.Similarity)) +
   geom_bar(stat = "identity") +
+  ylim(0, max(CosSimall$Cosine.Similarity) + 0.5) +
   theme_bw() +
   labs(x = "Varieties Compared",
        y = "Cosine Similarity") +
@@ -175,6 +177,7 @@ graphKLlinglevs <- ggplot(
   KLlinglevsGraphSafe, aes(x = LM.Type, y = KL.Divergence, fill = Varieties.Compared)) +
   geom_bar(stat = "identity", position = "dodge") +
   theme_bw() +
+  theme(axis.text.x = element_text(angle=45, vjust=1, hjust=1)) +
   labs(x = "LM Type", y = "KL Divergence", fill = "Varieties Compared") +
   scale_fill_manual(values = colorBlindPalette,
                     labels = c("Both English", "Both French", "English vs French"))
@@ -184,6 +187,7 @@ graphCosSimlinglevs <- ggplot(
   CosSimlinglevsGraphSafe, aes(x = LM.Type, y = Cosine.Similarity, fill = Varieties.Compared)) +
   geom_bar(stat = "identity", position = "dodge") +
   theme_bw() +
+  theme(axis.text.x = element_text(angle=45, vjust=1, hjust=1)) +
   labs(x = "LM Type", y = "Cosine Similarity", fill = "Varieties Compared") +
   scale_fill_manual(values = colorBlindPalette,
                     labels = c("Both English", "Both French", "English vs French"))
