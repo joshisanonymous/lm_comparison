@@ -129,7 +129,7 @@ CosSimlinglevs <- data.frame(
                 "Character Bigram", "Character 4-gram", "Character 6-gram"),
   "Both.English" = sapply(sameEn, calculateCosSim),
   "Both.French" = sapply(sameFr, calculateCosSim),
-  "English.vs.French" = sapply(different, calculateCosSim) 
+  "English.vs.French" = sapply(different, calculateCosSim)
 )
 CosSimlinglevsGraphSafe <- gather(CosSimlinglevs, key = "Varieties.Compared", value = "Cosine.Similarity",
                                   Both.English, Both.French, English.vs.French)
@@ -179,7 +179,7 @@ graphKLlinglevs <- ggplot(
   scale_fill_manual(values = colorBlindPalette,
                     labels = c("Both English", "Both French", "English vs French"))
 
-# Barplot for comparing KL divergence between LMs by linguistic level
+# Barplot for comparing cosine similarity between LMs by linguistic level
 graphCosSimlinglevs <- ggplot(
   CosSimlinglevsGraphSafe, aes(x = LM.Type, y = Cosine.Similarity, fill = Varieties.Compared)) +
   geom_bar(stat = "identity", position = "dodge") +
