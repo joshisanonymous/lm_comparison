@@ -356,6 +356,22 @@
 
   \section{Results}
     \label{sec:results}
+    The research question for this study asked if LMs can be used to measure the linguistic distance between two language varieties in a way that is more holistic than previously done.
+    The general results show that both KL divergence and cosine similarity yield values that are expected when measuring the distance between very similar and very different language varieties.
+    Very similar varieties lead to values that suggest little to no linguistic distance and very different varieties the opposite.
+    This is the case whether comparing all linguistic levels at once or comparing linguistic levels individually.
+    This suggests that LMs are indeed useful for measuring linguistic distance holistically.
+
+    Figures \ref{fig:graphklall} and \ref{fig:graphcossimall} the values obtained for KL divergence and cosine similarity, respectively, when working with all linguistic levels at once.
+    Combining linguistic levels in this case meant combining LMs end to end, creating distributions that include all word and character $n$-grams at once.
+    % Talk about how many duplicate items this yields because of unigrams being also represented in character n-grams.
+      % If this is a small proportion, it's okay. You can get the proportions pretty easily.
+    Where both language varieties are English or both French, LMs were trained on the first and then second halves of the relevant sections of the corpus, as discussed in section \ref{sec:meths_lms}, whereas the LMs in the English vs French comparison were trained on the entire English and French corpus sections.
+    For KL divergence, where smaller values mean represent less linguistic distance, like varieties had values near zero, whereas English vs French had a value of % Insert exact value.
+    Likewise, for cosine similarity, where a value of one means the distributions are identical and zero means they are orthogonal\footnote{
+      As discussed in section \ref{sec:meths_analysis}, cosine similarity is a measure of similarity in vector space, meaning directions are relevant.
+      As such, a cosine similarity of -1 would mean the distributions are exactly opposite, which did not occur in the data here.
+    }, like varieties had values very near one and English vs French had a value of % insert value.
 
     \begin{figure}[tbhp]
       \centering
@@ -375,6 +391,11 @@
       @
     \end{figure}
 
+    While the primary goal for this method of comparing varieties is to measure linguistic holistically, it is still possible to extract more detailed information about where the differences between two varieties lie.
+    One simple way to do this is to compare only like LM types.
+    Figures \ref{fig:graphkllinglevs} and \ref{fig:graphcossimlinglevs} show the results when using KL divergence and cosine similarity, respectively.
+    % Discuss where the larger and smaller differences lie and why that might be.
+
     \begin{figure}[tbhp]
       \centering
       \caption{KL divergence values comparing individual LM types, each representing one linguistic level, for pairs of language varieties}
@@ -393,12 +414,7 @@
       @
     \end{figure}
 
-    % europarl baseline results
-      % What are the KL divergence and cosine similarity values when comparing French and English?
-        % What about when comparing different model types? (Look at combining all models and looking at models individually)
-      % What are the KL divergence and cosine similarity values when comparing English-English comparisons and French-French comparisons?
-        % What about when comparing different model types? (Look at combining all models and looking at models individually)
-    % [After finishing the QP1 version of this,] do the same for the Twitter data between detected communities
+    % [After finishing the QP1 version of this,] do the same analysis for the Twitter data between detected communities
 
   \section{Discussion}
     \label{sec:discuss}
