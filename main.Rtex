@@ -364,14 +364,15 @@
 
     Figures \ref{fig:graphklall} and \ref{fig:graphcossimall} the values obtained for KL divergence and cosine similarity, respectively, when working with all linguistic levels at once.
     Combining linguistic levels in this case meant combining LMs end to end, creating distributions that include all word and character $n$-grams at once.
-    % Talk about how many duplicate items this yields because of unigrams being also represented in character n-grams.
-      % If this is a small proportion, it's okay. You can get the proportions pretty easily.
+    An unwanted result of collating the LMs is that some character $n$-grams will be identical to some word unigrams, resulting in multiple entries for the same $n$-gram in the LMs, and indeed there are \num{\Sexpr{length(allDuplicateNgrams)}} $n$-grams that have multiple entries in the LMs.
+    While this amount may sound very large, relative to the enormity of the LMs, it is a tiny proportion of the total number of $n$-grams, \Sexpr{round(length(allDuplicateNgrams) / (length(allDiff$ngram) - length(allDuplicateNgrams)), 4) * 100}\% to be exact.
     Where both language varieties are English or both French, LMs were trained on the first and then second halves of the relevant sections of the corpus, as discussed in section \ref{sec:meths_lms}, whereas the LMs in the English vs French comparison were trained on the entire English and French corpus sections.
-    For KL divergence, where smaller values mean represent less linguistic distance, like varieties had values near zero, whereas English vs French had a value of % Insert exact value.
+    For KL divergence, where smaller values represent less linguistic distance, like varieties had values near zero, whereas English vs French had a value of \Sexpr{round(KLall[KLall$Varieties.Compared == "English vs French", "KL.Divergence"], 3)}.
     Likewise, for cosine similarity, where a value of one means the distributions are identical and zero means they are orthogonal\footnote{
       As discussed in section \ref{sec:meths_analysis}, cosine similarity is a measure of similarity in vector space, meaning directions are relevant.
       As such, a cosine similarity of -1 would mean the distributions are exactly opposite, which did not occur in the data here.
-    }, like varieties had values very near one and English vs French had a value of % insert value.
+    }, like varieties had values very near one and English vs French had a value of \Sexpr{round(CosSimall[CosSimall$Varieties.Compared == "English vs French", "Cosine.Similarity"], 3)}.
+    This shows both that linguistic distance between varieties that are commonly described as separate languages is large and that it is a bit easier to conceptualize or just how large the distance is when using cosine similarity as the bounds are between -1 and 1.
 
     \begin{figure}[tbhp]
       \centering
@@ -392,7 +393,7 @@
     \end{figure}
 
     While the primary goal for this method of comparing varieties is to measure linguistic holistically, it is still possible to extract more detailed information about where the differences between two varieties lie.
-    One simple way to do this is to compare only like LM types.
+    One way to do this is to compare only like LM types.
     Figures \ref{fig:graphkllinglevs} and \ref{fig:graphcossimlinglevs} show the results when using KL divergence and cosine similarity, respectively.
     % Discuss where the larger and smaller differences lie and why that might be.
 

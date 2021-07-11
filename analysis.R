@@ -99,6 +99,10 @@ allDiff <- do.call("rbind", different)
 #    Stats    #
 #             #
 ###############
+# Get the proportion of duplicate n-grams in the combined models LM that are
+# duplicates out of all unique n-grams in the combined models LM
+allDuplicateNgrams <- allDiff$ngram[duplicated(allDiff$ngram)]
+
 # Get KL divergences
 KLlinglevs <- data.frame(
   "LM.Type" = c("Word Unigram", "Word Bigram",
