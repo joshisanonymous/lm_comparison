@@ -395,7 +395,10 @@
     While the primary goal for this method of comparing varieties is to measure linguistic holistically, it is still possible to extract more detailed information about where the differences between two varieties lie.
     One way to do this is to compare only like LM types.
     Figures \ref{fig:graphkllinglevs} and \ref{fig:graphcossimlinglevs} show the results when using KL divergence and cosine similarity, respectively.
-    % Discuss where the larger and smaller differences lie and why that might be.
+    Perhaps what is most noticeable for the English vs French comparisons is the relatively small distance between the two varieties in the character bigram LMs, \Sexpr{round(KLlinglevs[KLlinglevs$LM.Type == "Character Bigram", "English.vs.French"], 3)} using KL divergence and \Sexpr{round(CosSimlinglevs[CosSimlinglevs$LM.Type == "Character Bigram", "English.vs.French"], 3)} when using cosine similarity.
+    As Table \ref{tab:freq_bigrams} shows, four of the same character bigrams are part of the top ten most frequent in both LMs.
+    In some cases, this involves coincidence, such as the English preposition \lexi{on} and the French subject pronoun \lexi{on} both being frequent, but in others there is true similarity such as a word final \lexi{s} likely being frequent in both LMs because it can represent plurality in both varieties.
+    It is likely that most of the similarities in the character bigram LMs are coincidence, however, as the similarities diminish as one moves to larger character $n$-gram LMs.
 
     \begin{figure}[tbhp]
       \centering
@@ -415,29 +418,98 @@
       @
     \end{figure}
 
+    The similarities in the character bigram LMs are likely behind the linguistic distance between English and French not being even greater when collating all LMs.
+    The KL divergence and cosine similarity values for the collated LMs were \Sexpr{round(KLall[KLall$Varieties.Compared == "English vs French", "KL.Divergence"], 3)} and \Sexpr{round(CosSimall[CosSimall$Varieties.Compared == "English vs French", "Cosine.Similarity"], 3)}, respectively, which represent smaller linguistic distances than the values obtained from looking at different linguistic levels individually in all cases except for the character bigram distances, which again were \Sexpr{round(KLlinglevs[KLlinglevs$LM.Type == "Character Bigram", "English.vs.French"], 3)} for KL divergence and \Sexpr{round(CosSimlinglevs[CosSimlinglevs$LM.Type == "Character Bigram", "English.vs.French"], 3)} for cosine similarity.
+    The character bigram LMs were indeed outliers here.
+
+    \begin{table}[tbhp]
+      \centering
+      \caption{Ten most frequent character bigrams in the English and French LMs}
+      \label{tab:freq_bigrams}
+      \begin{tabular}{l | l l l l l l l l l l}
+        \multicolumn{11}{c}{} \\
+        English & \textbf{\Sexpr{diffMostCharBi[1, 1]}} & \Sexpr{diffMostCharBi[2, 1]} & \Sexpr{diffMostCharBi[3, 1]} & \textbf{\Sexpr{diffMostCharBi[4, 1]}} & \Sexpr{diffMostCharBi[5, 1]} & \Sexpr{diffMostCharBi[6, 1]} & \textbf{\Sexpr{diffMostCharBi[7, 1]}} & \Sexpr{diffMostCharBi[8, 1]} & \Sexpr{diffMostCharBi[9, 1]} & \textbf{\Sexpr{diffMostCharBi[10, 1]}} \\
+        French & \textbf{\Sexpr{diffMostCharBi[1, 3]}} & \textbf{\Sexpr{diffMostCharBi[2, 3]}} & \Sexpr{diffMostCharBi[3, 3]} & \Sexpr{diffMostCharBi[4, 3]} & \Sexpr{diffMostCharBi[5, 3]} & \textbf{\Sexpr{diffMostCharBi[6, 3]}} & \textbf{\Sexpr{diffMostCharBi[7, 3]}} & \Sexpr{diffMostCharBi[8, 3]} & \Sexpr{diffMostCharBi[9, 3]} & \Sexpr{diffMostCharBi[10, 3]} \\
+      \end{tabular}
+    \end{table}
+
+    Somewhat unexpectedly, the word unigram LMs showed the most linguistic distance at \Sexpr{round(KLlinglevs[KLlinglevs$LM.Type == "Word Unigram", "English.vs.French"], 3)} when measured with KL divergence.
+    This is unexpected because the influence of French on the English lexicon starting with the Norman invasion of England in 1066 is well documented.
+    For instance, English \lexi{authority} has its origin in Old French \parencite{noauthor_authority_nodate}, as do many words ending in \lexi{ty}.
+    However, the distance between these two LMs likely stems from the much higher frequency of function words over content words, the latter being more likely to be borrowed \parencite[pp.~223-224]{haugen_analysis_1950}.
+    As Table \ref{tab:freq_unigrams} shows, the most frequent word unigrams in both LMs are all function words, none of which are even coincidentally the same let alone being the same due to a historical relationship.
+
+    \begin{table}[tbhp]
+      \centering
+      \caption{Ten most frequent word unigrams in the English and French LMs}
+      \label{tab:freq_unigrams}
+      \begin{tabular}{l | l l l l l l l l l l}
+        \multicolumn{11}{c}{} \\
+        English & \Sexpr{diffMostWordUni[1, 1]} & \Sexpr{diffMostWordUni[2, 1]} & \Sexpr{diffMostWordUni[3, 1]} & \Sexpr{diffMostWordUni[4, 1]} & \Sexpr{diffMostWordUni[5, 1]} & \Sexpr{diffMostWordUni[6, 1]} & \Sexpr{diffMostWordUni[7, 1]} & \Sexpr{diffMostWordUni[8, 1]} & \Sexpr{diffMostWordUni[9, 1]} & \Sexpr{diffMostWordUni[10, 1]} \\
+        French & \Sexpr{diffMostWordUni[1, 3]} & \Sexpr{diffMostWordUni[2, 3]} & \Sexpr{diffMostWordUni[3, 3]} & \Sexpr{diffMostWordUni[4, 3]} & \Sexpr{diffMostWordUni[5, 3]} & \Sexpr{diffMostWordUni[6, 3]} & \Sexpr{diffMostWordUni[7, 3]} & \Sexpr{diffMostWordUni[8, 3]} & \Sexpr{diffMostWordUni[9, 3]} & \Sexpr{diffMostWordUni[10, 3]} \\
+      \end{tabular}
+    \end{table}
+
+    These results suggest that this method of holistically comparing language varieties using LMs is effective.
+    Varieties that should be identical end up having KL divergence and cosine similarity values that represent just that, and those that should be very different likewise can be quantified as being very different.
+    It is even possible to focus in on particular linguistic levels and, to some extent, individual linguistic features that distinguish varieties.
+    Even in these narrower foci, however, the analyses still involve far more items than even the broadest studies that use traditional linguistic variables.
+    For instance, the word unigram LMs used here include \num{\Sexpr{format(nrow(different$wordUni), scientific = FALSE)}} different words where even \citeauthor{bamman_gender_2014}'s (\citeyear{bamman_gender_2014}) study of gender included 10,000 different words.
+
     % [After finishing the QP1 version of this,] do the same analysis for the Twitter data between detected communities
 
   \section{Discussion}
     \label{sec:discuss}
-    % This technique for comparing varieties holistically appears to work, but there are some limitations to consider and questions left unanswered
-      % Are the language models used here the right models?
-      % How big do corpora need to be in order for this technique to work?
-      % How does this relate to traditional work that typically examines only a few linguistic variables but in great detail?
-    % Are the models used truly the best language models that could be used here?
-      % For instance, KL divergence here is calculated based on the empirical probabilities for each n-gram in each model (i.e., relative frequencies)
-      % An alternative would be to use something like term frequency minus inverse document frequency (TF-IDF), which is commonly used in NLP and is meant to give the greatest weight in a model to n-grams that are frequent in a small number of documents
-        % Eisenstein (2014) took a similar approach when identifying terms of import for differentiating between dialects on Twitter (5)
-      % If, however, the type of models used here are not optimal, the approach can still be just as easily applied to other types of language models, both existing and yet to be proposed types
-    % Related to whether these are the best types of language models to use for this technique of comparing varieties is the question of how large the corpora that are used to generate the language models ought to be
-      % The europarl corpora are quite large, which presumably means there would not be a great difference between something like an empirical probability and any other sort of calculated probability
-      % There are, however, cases where a researcher might want to apply the technique when using much smaller corpora
-      % There may very well be a threshold where different language model types are more or less useful depending on whether the corpora size is above or below the threshold
-        % This is something that cannot be addressed in the present study, but would be worthwhile to examine in future work
-    % As was discussed earlier, salient linguistic variables may be far more important than other variables
-      % For instance, the technique used here might find two varieties differ in that one variety uses the preposition "for" where another uses "of" sometimes
-        % It is not evident that such a small difference is noticeable at all, even subconsciously, by speakers of these varieties
-      % If the differences found between two varieties are not salient on any level, does it actually make sense to speak of them as two separate varieties?
-        % This question cannot be answered here, but it is at least a question that can now be examined by comparing the results from a holistic technique as used here to results for the same data from a more traditional, fine-grained analysis
+    While this technique for comparing language varieties holistically works, there are still some limitations to consider and questions left unanswered, three of which seem particularly worthy of discussion.
+    The first is the question of whether the LMs used here are in fact the optimal LMs to use.
+    The second is a question of practicality in that it is not clear how large the training corpora must be in order to obtain LMs that give reliable results.
+    Finally, the third question returns to the importance of salient linguistic features versus all other linguistic features.
+
+    The $n$-gram LMs used in this study were chosen based on the success that \textcite{duvenhage_short_2019} had with training a classifier to accurately determine the language varieties of documents when those varieties are similar.
+    This required a fairly sensitive classifier, and that sensitivity is also a desired feature when comparing linguistic distance.
+    However, it is not automatically true that what worked best for the classification task also works best for measuring linguistic distance.
+    For instance, instead of using word unigrams, word bigrams, character bigrams, character 4-grams, and character 6-grams, one could instead choose to use something along the lines of word unigrams, word trigrams, and character trigrams.
+    This latter approach would be better equipped to capture more distant syntactic dependencies due to the use of word trigrams.
+    Also, by avoiding the use of character bigrams, the similarities found here between those LMs would not be found.
+    To the extent that those similarities are truly coincidental, this is a benefit, but in the case that those similarities are due to some sort of relationship between the varieties, this is a detriment.
+
+    Another issue with LMs is that of how to count.
+    For calculating KL divergence, the empirical probability for each $n$-gram was used, whereas for cosine similarity, the frequency of each $n$-gram was used.
+    These are not the only two options, however, nor are they unquestionably the best options.
+    Another common approach used in NLP is to use term frequency inverse document frequency (TF-IDF).
+    TF-IDF would calculate the weight of each $n$-gram by multiplying the frequency of a term in the corpus for a particular variety by the inverse of its frequency in appearing in any corpus, meaning the corpus related to the variety in addition to the corpora related to the varieties being compared.
+    For instance, an $n$-gram that appears often in the English corpus here and rarely if ever in the French corpus would have greater weight in the LM than an $n$-gram that is just as frequent in the English corpus but also frequent in the French corpus.
+    The goal is to identify those $n$-grams that are particular to a given variety but not simply by their frequency, which as was demonstrated here, leads to great weight placed on items such as function words.
+    \textcite{eisenstein_identifying_2014} used a similar weighting when identifying terms of import for differentiating between dialects on Twitter (p.~5).
+    Essentially, this approach would be trying to capture the idea of saliency on which traditional variationist studies generally focus.
+
+    None of these questions about the optimal LMs to use invalidate the method proposed here, however.
+    The method is easily adapted to any LM type that a researcher wishes to use.
+    It may very well be that the choice of LMs is best made by considering the varieties being compared on a case by case basis.
+    For instance, if both varieties are known to have many morphemes that are represented by character bigrams, character bigram LMs may be a good choice to include.
+    However, what would be lost in such a case by case approach is the ability to compare linguistic distances obtained with those obtained in other studies.
+    These are issues that must still be worked out through further research.
+
+    Related to whether the LMs used here are the best types to use for this technique of comparing varieties holistically is the question of how large the corpora that are used to generate the LMs ought to be.
+    The Europarl corpus in this case is quite large, containing \num{\Sexpr{format(sum(different$wordUni$x), scientific = FALSE)}} word in the English portion and \num{\Sexpr{format(sum(different$wordUni$y), scientific = FALSE)}} in the French portion.
+    Such large samples helps ensure that a broad collection of $n$-grams is recorded and that their empirical probabilities are not drastically differrent from any other sort of estimated probabilities if they are different at all.
+    One does not always have access to similar sized corpora for the language varieties one wishes to analyze, however.
+    For instance, if a researcher interested in speech from residents of the Gulf states of the United States, meaning they are interested in a corpus that has been transcribed into IPA,\footnote{
+      Indeed, $n$-gram LMs can just as easily be trained from IPA transcriptions as from written language.
+    } they could access the Digital Archive of Southern Speech (DASS) \parencite{kretzschmar_jr._digital_2013}.
+    In terms of phonetically transcribed corpora, this one is relatively large at 370 hours.
+    However, in comparison to a corpus such as Europarl, 370 hours is rather small, even more so for each variety represented that one may be comparing.
+    The researcher would also want the topics of conversation to all be the same to control for the possibility of topic alone making varieties appear dissimilar, which could shrink the size of the sample for each variety even further.
+    There may very well be a threshold for the size of a corpora where LMs trained on those corpora are not robust enough to allow for valid comparisons.
+    This is something that cannot be addressed in the present study, but would be worthwhile to examine in future work.
+
+    Finally, as was noted in discussing TF-IDF, there is the possibility that certain salient linguistic features are far more important than other for distinguishing a variety, and saliency is not always identifiable through the application of algorithms and quantification.
+    In the cases of using $n$-gram frequencies or empirical probabilities, the assumption is that those $n$-grams that are more common are also more definitive of the variety, which of course is not necessarily the case.
+    TF-IDF attempts to do better by also taking into account the frequency of those $n$-grams in other varieties, but this still may not succeed at identifying what interlocutors find to be salient.
+    The implication is that the holistic method of comparing the distance between language varieties proposed here may in fact suggest that two varieties are quite distant from each other whereas speakers of those varieties may feel that their varieties are not so different at all as none of the differences are particularly salient to them.
+    While it is not clear that such cases would indeed be found, their existence would at least not invalidate the method proposed here.
+    It would instead call for terminology that distinguishes between what can be objectively quantified as different systems versus what is intersubjectively accepted as different varieties.
+    It would also allow for new insights into social relations as researchers attempt to discover how such disconnects are possible.
 
   \section{Conclusion}
     \label{sec:conc}

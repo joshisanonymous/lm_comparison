@@ -5,7 +5,7 @@
 # Joshua McNeill - joshua dot mcneill at uga dot edu                  #
 #######################################################################
 
-## ----load_packages_functions_data ----
+## ---- load_packages_functions_data ----
 # Packages
 library(philentropy)
 library(ggplot2)
@@ -87,6 +87,14 @@ different <- list(
   charSix = mergeLMs(euroEnCharSix, euroFrCharSix)
 )
 different <- lapply(different, setNames, (c("ngram", "x", "y")))
+# Get most frequent character bigrams for each different variety
+diffMostCharBi <- cbind(head(different$charBi[order(-different$charBi$x), 1:2], 10),
+                        head(different$charBi[order(-different$charBi$y), c(1,3)], 10)
+)
+# Get most frequent word unigrams for each different variety
+diffMostWordUni <- cbind(head(different$wordUni[order(-different$wordUni$x), 1:2], 10),
+                         head(different$wordUni[order(-different$wordUni$y), c(1, 3)], 10)
+)
 
 # Combine LMs into large multidimensional LMs good for calculateCosSim
 allSameEn <- do.call("rbind", sameEn)
@@ -170,7 +178,7 @@ graphKLall <- ggplot(
 graphCosSimall <- ggplot(
   CosSimall, aes(x = Varieties.Compared, y = Cosine.Similarity)) +
   geom_bar(stat = "identity") +
-  ylim(0, max(CosSimall$Cosine.Similarity) + 0.5) +
+  ylim(0, max(CosSimall$Cosine.Similarity) + 0.1) +
   theme_bw() +
   labs(x = "Varieties Compared",
        y = "Cosine Similarity") +
