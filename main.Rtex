@@ -10,7 +10,10 @@
     \addbibresource{References.bib}
   \usepackage{hyperref}
     \hypersetup{colorlinks=true, allcolors=blue}
-  \usepackage[group-minimum-digits=4, group-separator={,}]{siunitx}
+  \usepackage{siunitx}
+    \sisetup{group-minimum-digits=4,
+             group-separator={,},
+             detect-all}
   \usepackage{enumitem}
   \usepackage{tabularx}
     \newcolumntype{Y}{>{\raggedleft\arraybackslash}X}
