@@ -1,0 +1,104 @@
+%%%%%%%%%%%%%%%%%%%%%%%%
+% Compile with XeLaTeX %
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass{beamer}
+
+  % Beamer settings
+  % \usetheme{Berkeley}
+  \usetheme{CambridgeUS}
+  % \usecolortheme{dove}
+  % \usecolortheme{rose}
+  \usecolortheme{seagull}
+  \usefonttheme{professionalfonts}
+  \usefonttheme{serif}
+  \setbeamertemplate{bibliography item}{}
+
+  % Packages and settings
+  \usepackage{fontspec}
+    \setmainfont{Charis SIL}
+  \usepackage[style=apa, backend=biber]{biblatex}
+    \addbibresource{References.bib}
+  \usepackage{hyperref}
+    \hypersetup{colorlinks=true, allcolors=blue}
+  \usepackage{siunitx}
+    \sisetup{group-minimum-digits=4,
+             group-separator={,},
+             detect-all}
+  \usepackage{tabularx}
+    \newcolumntype{Y}{>{\raggedleft\arraybackslash}X}
+
+  % Document information
+  \title{Using language models for holistic language variety comparisons}
+  \author{Joshua McNeill}
+  \institute{University of Georgia}
+  \date{29 July 2021}
+
+  % New commands
+  \newcommand{\orth}[1]{$\langle$#1$\rangle$}
+  \newcommand{\lexi}[1]{\textit{#1}}
+  \newcommand{\gloss}[1]{`#1'}
+
+\begin{document}
+  <<settings_load_scripts, echo = FALSE>>=
+  read_chunk("analysis.R")
+  opts_chunk$set(echo = FALSE,
+                 warning = FALSE,
+                 message = FALSE,
+                 results = "asis",
+                 fig.height = 2.5,
+                 fig.width = 3)
+  @
+  <<load_packages_functions_data>>=
+  @
+  \begin{frame}
+    \titlepage
+    \tiny{Data and code available at \url{https://osf.io/9cjpw/}.}
+  \end{frame}
+
+  \begin{frame}{The study}
+    \begin{itemize}
+      \item Goal: Develop a holistic measure of linguistic distance between varieties
+      \item Why: Traditional methods generalize from very small sets of linguistic variables
+      \item Method: Incorporate LMs from NLP to capture all linguistic items
+    \end{itemize}
+  \end{frame}
+
+  \begin{frame}[t]
+    \begin{columns}
+      \column{0.5\textwidth}
+        \begin{center}
+          <<graphKLall>>=
+          graphKLall
+          @
+        \end{center}
+        KL divergence values comparing the combination of all LMs, representing all linguistic levels at once, for pairs of language varieties, rounded to the nearest thousandth
+      \column{0.5\textwidth}
+        \begin{center}
+          <<graphCosSimall>>=
+          graphCosSimall
+          @
+        \end{center}
+        Cosine similarity values comparing the combination of all LMs, representing all linguistic levels at once, for pairs of language varieties, rounded to the nearest thousandth
+    \end{columns}
+  \end{frame}
+
+  \begin{frame}[t]
+    \begin{columns}
+      \column{0.5\textwidth}
+        \begin{center}
+          <<graphKLlinglevs>>=
+          graphKLlinglevs
+          @
+        \end{center}
+        KL divergence values comparing individual LM types, each representing one linguistic level, for pairs of language varieties
+      \column{0.5\textwidth}
+        \begin{center}
+          <<graphCosSimlinglevs>>=
+          graphCosSimlinglevs
+          @
+        \end{center}
+        Cosine similarity values comparing individual LM types, each representing one linguistic level, for pairs of language varieties
+    \end{columns}
+  \end{frame}
+\end{document}
