@@ -96,10 +96,48 @@ diffMostWordUni <- cbind(head(different$wordUni[order(-different$wordUni$x), 1:2
                          head(different$wordUni[order(-different$wordUni$y), c(1, 3)], 10)
 )
 
+# Get most frequent word unigrams for each English LM
+sameEnMostWordUni <- cbind(head(sameEn$wordUni[order(-sameEn$wordUni$x), 1:2], 10),
+                           head(sameEn$wordUni[order(-sameEn$wordUni$y), c(1, 3)], 10)
+)
+
+# Get most frequent word bigrams for each different variety
+diffMostWordBi <- cbind(head(different$wordBi[order(-different$wordBi$x), 1:2], 10),
+                        head(different$wordBi[order(-different$wordBi$y), c(1, 3)], 10)
+)
+
+# Get most frequent word bigrams for each English LM
+sameEnMostWordBi <- cbind(head(sameEn$wordBi[order(-sameEn$wordBi$x), 1:2], 10),
+                          head(sameEn$wordBi[order(-sameEn$wordBi$y), c(1, 3)], 10)
+)
+
+# Get most frequent character 4-grams for each different variety
+diffMostCharFour <- cbind(head(different$charFour[order(-different$charFour$x), 1:2], 10),
+                          head(different$charFour[order(-different$charFour$y), c(1, 3)], 10)
+)
+
+# Get most frequent character 4-grams for each English LM
+sameEnMostCharFour <- cbind(head(sameEn$charFour[order(-sameEn$charFour$x), 1:2], 10),
+                            head(sameEn$charFour[order(-sameEn$charFour$y), c(1, 3)], 10)
+)
+
+# Get most frequent character 6-grams for each different variety
+diffMostCharSix <- cbind(head(different$charSix[order(-different$charSix$x), 1:2], 10),
+                         head(different$charSix[order(-different$charSix$y), c(1, 3)], 10)
+)
+
+# Get most frequent character 6-grams for each English LM
+sameEnMostCharSix <- cbind(head(sameEn$charSix[order(-sameEn$charSix$x), 1:2], 10),
+                           head(sameEn$charSix[order(-sameEn$charSix$y), c(1, 3)], 10)
+)
+
 # Combine LMs into large multidimensional LMs good for calculateCosSim
 allSameEn <- do.call("rbind", sameEn)
 allSameFr <- do.call("rbind", sameFr)
 allDiff <- do.call("rbind", different)
+
+# Grab small range of models to demonstrate classification
+wordBiDiffeG <- allDiff[10354200:10354210,]
 
 ###############
 #             #
